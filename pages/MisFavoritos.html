@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis favoritos</title>
+    <link rel="stylesheet" href="/public/styles/stylesfav.css">
+    <link rel="stylesheet" href="/public/styles/normalize.css">
+    <link rel="stylesheet" href="/public/styles/style.css">
+    <link rel="stylesheet" href="/public/styles/inicio.css">
+    <link rel="stylesheet" href="/public/styles/stylesfav.css">
+    <link rel="stylesheet" href="/public/styles/styles_barra.css">
+    <script src="/public/ARCY-PRUEBAS/admin.js"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar" >
+            <span id="openBtn" class="btn-icon" onclick="openNav()" >&#9776;</span>
+
+            <img src="/public/assets/icons/Logo.PNG" class="img-nav" alt="Logo" id="logoImage">
+
+            <!-- Ahora boton de regresar -->
+            <button type="button" id="btnTriggerSB" class="btn-icon" onclick="window.location.href='/pages/inicio.html'">
+                <img src="/public/assets/icons/regresar.png" alt="Buscar" class="img-nav">
+            </button>
+            
+            
+        </div>
+
+        <div class="container-modal-sidebar" id="modalSidebar">
+            <div id="sidebar" class="sidebar">
+                <div class="user">
+                    <p>Hola, </p><b id="nombreUsuario"> NOMBRE </b> 
+                </div>
+                <div class="sidebar-text">
+                    <a href="/pages/Aventuras_proximas.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/itinerarioIcono.png" class="sidebar-img"> Aventuras Proximas 
+                    </a>
+                    <a href="/pages/MisFavoritos.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/favoritosBlancoRosa.png" class="sidebar-img"> Lugares favoritos 
+                    </a>
+                </div>
+
+                <div class="sidebar-text" style="margin-top: auto;">
+                    <a href="/pages/perfilTurista.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/engraneIcon.png" class="sidebar-img"> Cuenta 
+                    </a>
+                    <a href="/pages/FormularioQuejas.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/Bandera.png" class="sidebar-img" style="border-radius: 0;"> Enviar comentarios <br>de la aplicación
+                    </a>
+                    <a href="#" class="btn-sidebar" id="cerrarSesion"> 
+                        <img src="/public/assets/icons/cerrarIcono.png" class="sidebar-img"> Cerrar Sesión 
+                    </a>
+                </div>
+                <button type="button" id="closeBtn" class="closeBtn btn-icon" onclick="closeNav()">&times;</a>
+            </div>
+        </div>  
+    </header>
+    <main> 
+        <h1 class="titleAP">Mis Favoritos</h1>
+
+        <div id="favodes">
+            <!-- Las tarjetas de lugares favoritos se insertarán aquí mediante JavaScript -->
+        </div>
+
+        <!-- Mensaje y botón que se muestran si no hay lugares favoritos -->
+        <div id="no-favorites-message" style="display: none;">
+            <p>No hay lugares favoritos agregados aún.</p>
+            <button onclick="window.location.href='/pages/inicio.html'">Ir a agregar</button>
+        </div>
+
+        <!-- Contenedor oculto para el servicio de Google Maps -->
+        <div id="map" style="display: none;"></div>
+    </main>
+
+    <script src="/public/js/toogle_modal.js"></script>
+    <script src="/public/js/expandir.js"></script>
+    <script src="/public/js/expandir-weekend.js"></script>
+    <script type="module" src="/public/js/jquery-3.7.1.min.js"></script>
+    <script src="/public/js/botones.js"></script>
+    <script type="module" src="MySQL/lugarFavorito.js"></script>
+    <script src="/public/js/goinit.js"></script>
+    <script  src="/public/js/favdes.js"></script> <!-- Tu archivo JavaScript que maneja la lógica -->
+    <script src="/public/js/jquery-3.7.1.min.js"></script>
+    <script src="/public/js/map.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHOy3mcZGISeOqO2dYbPbmBEHplnudO-E&callback=InitMap&libraries=places&v=weekly" defer
+    ></script>
+</body>
+</html>

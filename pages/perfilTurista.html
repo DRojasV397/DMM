@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de datos de la empresa</title>
+    <link rel="stylesheet" href="/public/styles/normalize.css">
+    <link rel="stylesheet" href="/public/styles/style.css">
+    <link rel="stylesheet" href="/public/styles/styles_perfil.css">
+    <script src="/public/ARCY-PRUEBAS/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    
+</head>
+<body>
+    <header>
+        <div class="navbar" >
+            <span id="openBtn" class="btn-icon" onclick="openNav()">&#9776;</span>
+
+            <img src="/public/assets/icons/Logo.PNG" class="img-nav" alt="Logo" id="logoImage">
+        </div>
+        
+        <div class="page-title">
+            <h2 class="h1-title">Configuración de Cuenta</h2>
+        </div>
+
+        <div class="container-modal-sidebar" id="modalSidebar">
+            <div id="sidebar" class="sidebar">
+                <div class="user">
+                    <p>Hola, </p><b id="nombreUsuario"> NOMBRE </b> 
+                </div>
+                <div class="sidebar-text">
+                    <a href="/pages/Aventuras_proximas.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/itinerarioIcono.png" class="sidebar-img"> Aventuras 
+                    </a>
+                    <a href="/pages/MisFavoritos.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/favoritosBlancoRosa.png" class="sidebar-img"> Lugares favoritos 
+                    </a>
+
+                </div>
+
+                <div class="sidebar-text" style="margin-top: auto;">
+                    <a href="/pages/perfilTurista.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/engraneIcon.png" class="sidebar-img"> Cuenta 
+                    </a>
+                    <a href="/pages/FormularioQuejas.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/Bandera.png" class="sidebar-img" style="border-radius: 0;"> Enviar comentarios <br>de la aplicación
+                    </a>
+                    <a href="#" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/cerrarIcono.png" class="sidebar-img"> Cerrar Sesión 
+                    </a>
+                </div>
+                <button type="button" id="closeBtn" class="closeBtn btn-icon" onclick="closeNav()">&times;</a>
+            </div>
+        </div>  
+    </header>
+    <main>
+        <div class="container-data">
+            <div class="userH">
+                <p id="name"></p>
+                <p id="type">Turista</p>
+            </div>
+            <!--<form id="updateEmail" class="form-profile" novalidate>
+                <label for="email" class="label-profile">Correo electrónico</label><br>
+                <div class="container-input" id="contInputEmail">
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico" class="input-profile" required disabled>
+                    <button type="button" class="btn-icon" id="editEmail">
+                        <img src="/assets/icons/editarIcono.png" style="width:24px; height:24px;" >
+                    </button>
+                </div>
+            </form>-->
+            <form id="updatePassword" class="form-profile" novalidate>
+                <label for="password" class="label-profile" id="labelPassword">Contraseña</label><br>
+                <div class="container-input" id="contInputPassword">
+                    <div class="password-container">
+                        <input type="password" id="password" name="password" placeholder="Nueva contraseña" class="input-profile" required disabled>
+                        <img src="/public/assets/icons/Boton ojoA.svg" alt="Mostrar contraseña" id="togglePassword">
+                    </div>
+                    <button type="button" class="btn-icon" id="editPassword">
+                        <img src="/public/assets/icons/editarIcono.png" style="width:24px; height:24px;">
+                    </button>
+                </div>
+
+            </form>
+            <div class="container-delete">
+                <button type="button" class="btn-deleteAcc" id="btnDeleteAccount">
+                    <h3 style="margin: 0;">Borrar cuenta</h3>
+                    <img src="/public/assets/icons/basureroIcon.png" width="32px" height="32px">
+                </button>
+                <!-- Ventana modal -->
+                <div class="container-modal" id="cModalAlertDelete">
+
+                </div>
+            </div>
+            
+            
+        </div>
+
+    </main>
+
+    <script type="module" src="/public/js/jquery-3.7.1.min.js"></script>
+    <script src="/public/js/map.js"></script>
+    <script src="/public/js/cambiar_datos.js"></script>
+    <script type="module" src="/public/js/Hide.js"></script>
+</body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="/public/styles/normalize.css">
+    <link rel="stylesheet" href="/public/styles/style.css">
+    <link rel="stylesheet" href="/public/styles/inicio.css">
+    <link rel="stylesheet" href="/public/styles/styles_barra.css">
+    <link rel="stylesheet" href="/public/styles/Aventuras_proximas.css">
+    <link rel="stylesheet" href="/public/styles/styleformularioemergente.css">
+    <script src="/public/ARCY-PRUEBAS/admin.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css">
+    <script src="/public/ARCY-PRUEBAS/favoritos.js"></script>
+    <style>
+    
+    .botones
+    {
+        display: flex;
+        justify-content: space-between;
+        position: fixed; /* or position: absolute; */
+        bottom: 0;
+        width: 100%;
+        background-color: #ffffffb9; /* Add background color if needed */
+        padding: 8px; /* Add padding if needed */
+        box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); /* Add box shadow if needed */
+    }
+
+    .create-adventure-link {
+    background-color: #D57275; /* Color de fondo del enlace */
+    color: white; /* Color del texto */
+    padding: 10px 30px; /* Espaciado interno del enlace */
+    text-align: center; /* Alinea el texto en el centro */
+    text-decoration: none; /* Elimina el subrayado del texto */
+    display: inline-block; /* Hace que el enlace sea un bloque en línea */
+    font-size: 16px; /* Tamaño del texto */
+    margin: 4px 2px; /* Margen alrededor del enlace */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el enlace */
+    border: none; /* Elimina el borde del enlace */
+    border-radius: 5px; /* Bordes redondeados */
+    transition-duration: 0.4s; /* Duración de la transición al cambiar de estilo */
+    font-weight: bold;
+    }
+
+    .general-info{
+        background-color: #ffffffb9;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .column{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+    
+    .cont-ginfo{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .inserted-ginfo{
+        margin-left: 4px;
+        overflow: hidden; 
+        white-space: normal; 
+        word-wrap: break-word; 
+    }
+    
+    .header-o-ginfo{
+        display: flex;
+        align-items: center;
+        p{
+            margin-top: 4px;
+        }
+    }
+
+    .header-o-ginfo img{
+        width: 10px;
+        height: auto;
+    }
+
+    .scrollable-section{
+    font-size: 12px; /* Tamaño deseado para cada sección */
+    white-space: nowrap;
+    overflow-x: hidden;
+    width: 85%;
+    cursor: pointer; /* Cambia el cursor para indicar que el elemento es interactivo */
+}
+
+.scrollable-section:hover{
+    overflow-x: overlay; /* Permite el desplazamiento horizontal */
+}
+
+.scrollable-section::-webkit-scrollbar {
+    height: 5px; /* Altura de la barra de desplazamiento */
+    background: transparent; /* Fondo transparente */
+}
+
+.scrollable-section::-webkit-scrollbar-thumb {
+    background: #888; /* Color del deslizador de la barra de desplazamiento */
+    border-radius: 10px; /* Bordes redondeados del deslizador */
+}
+
+.scrollable-section::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color al pasar el cursor sobre el deslizador */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="navbar" >
+            <span id="openBtn" class="btn-icon" onclick="openNav()" >&#9776;</span> 
+
+            <img src="/public/assets/icons/Logo.PNG" class="img-nav" alt="Logo" id="logoImage">
+
+            <!-- Boton trigger de Lupa -->
+            <button type="button" id="btnTriggerSB" class="btn-icon">
+                <img src="/public/assets/icons/lupaGoogl.png" alt="Buscar" class="img-nav">
+            </button>
+            
+        </div>
+
+        <div class="container-modal-sidebar" id="modalSidebar">
+            <div id="sidebar" class="sidebar">
+                <div class="user">
+                    <p>Hola, </p><b id="nombreUsuario"> NOMBRE </b> 
+                </div>
+                <div class="sidebar-text">
+                    <a href="/pages/Aventuras_proximas.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/itinerarioIcono.png" class="sidebar-img"> Aventuras 
+                    </a>
+                    <a href="/pages/MisFavoritos.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/favoritosBlancoRosa.png" class="sidebar-img"> Lugares favoritos 
+                    </a>
+                </div>
+
+                <div class="sidebar-text" style="margin-top: auto;">
+                    <a href="/pages/perfilTurista.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/engraneIcon.png" class="sidebar-img"> Cuenta 
+                    </a>
+                    <a href="/pages/FormularioQuejas.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/Bandera.png" class="sidebar-img" style="border-radius: 0;"> Enviar comentarios <br>de la aplicación
+                    </a>
+                    <a href="#" class="btn-sidebar" id="cerrarSesion"> 
+                        <img src="/public/assets/icons/cerrarIcono.png" class="sidebar-img"> Cerrar Sesión 
+                    </a>
+                </div>
+                <button type="button" id="closeBtn" class="closeBtn btn-icon" onclick="closeNav()">&times;</a>
+            </div>
+        </div>  
+    </header>
+
+    <main> 
+        <div class="general-info">
+            <div class="column">
+                <div class="cont-ginfo scrollable-section">
+                    <div class="header-o-ginfo ">
+                        <img src="/public/assets/icons/origenIcon.png" width="24px" height="24px">
+                        <span class="scrollable-section"><b >Aventura: </b><span id="nombreAventura"> a </span></span>
+                    </div>
+                </div>
+                <div class="cont-ginfo scrollable-section">
+                    <div class="header-o-ginfo">
+                        <img src="/public/assets/icons/reloj3.png" width="24px" height="24px">
+                        <span class="scrollable-section"><b >Duración: </b><span id="length"> Calculando Ruta... </span></span>
+                        </div>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="cont-ginfo scrollable-section">
+                    <div class="header-o-ginfo">
+                        <img src="/public/assets/icons/origenIcon.png" width="24px" height="24px">
+                        <span class="scrollable-section"><b>Origen: </b><span id="nombreLugarOrigen"> Sin Origen especificado. </span></span>
+                         </div>
+                </div>
+                <div class="cont-ginfo scrollable-section">
+                    <div class="header-o-ginfo">
+                        <img src="/public/assets/icons/origenIcon.png" width="24px" height="24px">
+                        <span class="scrollable-section"><b>Destino: </b><span id="nombreLugar"> Sin Origen especificado. </span></span>
+                        </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="auxPlaces" style="display: none;"></div>
+        <div id="map" ></div>
+        <div class="botones">
+            <div class="Boton" style="margin: 4px 0 0 4px;">
+                <button type="button" class="create-adventure-link" id="btnOmitir">Cancelar</button>
+            </div>
+            <div class="boton" style="margin: 4px 0 0 4px;">
+                <button type="button" class="create-adventure-link" id="btnLlegar">He llegado</button>
+            </div>
+        </div>
+        <div class="card" id="card" style="height: 130px !important; bottom: 6% !important;">
+            <img src="/public/assets/icons/Flecha pa arriba.png" id="ToogleExpandir">
+                <!--Parte del div que se verá al minimizardo-->
+                <!-- <div class="Msg-recomendar"> Te recomendamos...</div> -->
+                <div class="place-about">
+                        <div class="img-referente" id="img-referente" style="align-items: center;">
+                            <img src="/public/assets/icons/Lugarejemplo.PNG" width="64px" height="64px" style="margin:0px 4px;">
+                        </div>
+
+                    <div class="place-info">
+                        <div class="info-add">
+                            <img src="/public/assets/icons/promocionNegroIcon.png" width="15px" height="15px" style="margin:0px 4px;">
+                            <div class="info-name" id="info-name">Aqui va el nombre del lugar</div>
+                        </div>
+                        <div class="info-calification">
+                        <!--Se debe agregar la funcionalidad para colorear las estrellas-->
+                            <div class="calification-puntaje" id="calification-puntaje">
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                            </div>
+                            <div class="calification-number" id="calification-number">4.5/5</div>
+                        </div>
+                        <div class="info-more">
+                        <!--Aquí irá el tipo de lugar-->
+                            <div class="more-type" id="more-type">Sitio de interes1</div>
+                            <div class="more-direction" id="more-direction"> Av. 56, San Rafael</div>
+                        </div>
+                        <div class="info-horario">
+                            <div class="horario-status" id="horario-status" style="color: green;">Abierto</div>
+                            <div class="horario-day" id="horario-day">cierra a la 1 a.m.</div>
+                        </div>
+                    </div>
+                    <div class="place-favorite">
+                        <div class="favorite-icon" style="align-items: center;">
+                            <img src="/public/assets/icons/favoritosIcon.png" id= "favorito" width="32px" height="32px" style="margin:0px 4px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="place-comentario" id="place-comentario">
+                    <div class="comentario-user" id="comentario-user">
+                        <img src="/public/assets/icons/Perfil.png" width="32px" height="32px" style="margin:0px 4px; border-radius: 50%;">
+                    </div>
+                    <div class="comentario-texto" id="comentario-texto">
+                        "Siempre vengo a relajarme a este lugar"
+                    </div>
+                </div>
+
+                <!--Esta es la parte del div que se verá al expandirlo-->
+            <div class="card-expandida" id="card-expandida">
+                <div class="place-header-about">
+                    <div class="header-img">
+                        <div class="img-referente1" id="img-referente1" style="align-items: center;">
+                            <img src="/public/assets/icons/Lugarejemplo.PNG" width="72px" height="72px" style="margin:0px 4px;">
+                        </div>
+                        <div class="visitado" id="visitado">Visitado</div>
+                    </div>
+                        <div class="header-name" id="header-name" datase>
+                            Parque de las Esculturas
+                        </div>
+                </div>
+                <!--Botones e información importante del sitio-->
+                <div class="place-body-details">
+                    <div class="body-button-left" style="align-items: center;">
+                        <div class="flecha-icon" style="align-items: center;">
+                            <a class="dropdown-item" href="#" id="Alternar">                            
+                                <img src="/public/assets/icons/flechaBackAzul.png" id= "flecha" width="32px" height="32px" style="margin:0px 4px;">
+                            </a>
+                        </div>
+                        <br>
+                        <div class="itineriario-icon dropdown-toggle" id="selectorItinerario" data-bs-toggle="dropdown" style="align-items: center;">
+                            <img src="/public/assets/icons/agregarItinIconV2.png" id= "itinerario" width="30px" height="40px" style="margin:0px 4px;">
+                            <ul class="dropdown-menu" id="itinerariosDisponibles">
+                                <!-- Aqui se insertan los itinerarios existentes-->
+                                
+                                <li<a class="dropdown-item" href="#" id="nuevoItinerario" onclick="mostrarFormulario()">
+                                    <img src="/public/assets/icons/agregarIcon2.png" width="24px" height="24px">
+                                    Agregar a itinerario nuevo
+                                </a></li>
+                            </ul>
+                        </div>
+                        <div id="formulario-flotante">
+                            <h2 id="ITINERARIO">Crear Itinerario</h2>
+                            <form>
+                              <label for="NombreItinerario">Nombre Itinerario</label>
+                              <input id="NomIti" type="text" id="NombreItinerario">
+                              <button id="btnCerrar" type="button" onclick="ocultarFormulario()">Cerrar</button>
+                              <button id="btnGuardar" type="button" onclick="validateForm()">Aceptar</button>
+                            </form>
+                          </div>
+                    </div>
+                    <script>
+
+                        // Función para mostrar el formulario
+                        function mostrarFormulario() {
+                          document.getElementById('formulario-flotante').style.display = 'block';
+                        }
+                        function validateForm() {
+                            const nombreItinerario = document.getElementById('NomIti');
+                            if (nombreItinerario.value.trim() === '') {
+                                showAlert('El nombre del itinerario no ha sido llenado');
+                                highlightInvalidField(nombreItinerario);
+                                return false;
+                            } else {
+                                removeHighlight(nombreItinerario);
+                            }
+
+                            if (nombreItinerario.value.trim().length < 5 || nombreItinerario.value.trim().length > 15) {
+                                showAlert('El nombre del itinerario debe tener entre 5 y 15 caracteres.');
+                                highlightInvalidField(nombreItinerario);
+                                return false;
+                            } else {
+                                showDone('');
+                                removeHighlight(nombreItinerario);
+                                ocultarFormulario();
+                            }
+                            return true;
+                        }
+
+                        // Función para ocultar el formulario
+                        function ocultarFormulario() {
+                          document.getElementById('formulario-flotante').style.display = 'none';
+                          const nombreItinerario = document.getElementById('NomIti');
+                            nombreItinerario.value = '';
+                        }
+
+                        function showAlert(message) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: message,
+                                });
+                            }
+
+                            function showDone(message) {
+                                Swal.fire({
+                                    position: "top-end",
+                                    icon: "success",
+                                    title: "¡Lugar agregado en tu Itinerario creado!",
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                    onOpen: () => {
+            // Centrar manualmente el cuadro de diálogo
+            const modal = Swal.getPopup();
+            modal.style.left = `${(window.innerWidth - modal.offsetWidth) / 2}px`;
+            modal.style.top = `${(window.innerHeight - modal.offsetHeight) / 2}px`;
+        }
+                                });
+                            }
+
+                            function highlightInvalidField(field) {
+                                field.style.borderColor = 'red';
+                            }
+
+                            function removeHighlight(field) {
+                                field.style.borderColor = ''; // Reset to default
+                            }
+                      </script>
+                      <script>
+function showAlert(message) {
+    alert(message);
+}
+
+                    </script>
+                    
+
+                    <div class="body-details">
+                        <div class="details-score">
+                            <div id="stars-container">
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                                <span class="star">&#9733;</span>
+                            </div>
+                            <div class="score-number" id="score-number">4.5/5</div>
+                        </div>
+                        <div class="details-domicilio">
+                            <img src="/public/assets/icons/ubicacionIcon.png" width="15px" height="15px" style="margin:0px 4px;">
+                            <div class="domicilio-text" id="details-domicilio">Av. 56, San Rafael, 54730 Cuautitlán Izcalli, Méx.</div>
+                        </div>
+                        <div class="details-horario">
+                            <img src="/public/assets/icons/reloj2.png" width="15px" height="15px" style="margin:0px 4px;">
+                            <div class="horario-detalles">
+                                <div class="horario-text" id="horario-text">Abierto  hasta las 10:00 p.m.</div>
+                                    <!-- Arreglo que muestra detalles del horario de apertura del lugar -->
+                                        <div class="weekend-text" style="display: none;">
+                                            <div class="lunes" id="lunes">Lunes: </div>
+                                            <div class="martes" id="martes">Martes: </div>
+                                            <div class="miercoles" id="miercoles">Miércoles: </div>
+                                            <div class="jueves" id="jueves">Jueves: </div>
+                                            <div class="viernes" id="viernes">Viernes: </div>
+                                            <div class="sabado" id="sabado">Sábado: </div>
+                                            <div class="domingo" id="domingo">Domingo: </div>
+                                        </div>
+                                <img src="/public/assets/icons/expandir.png" id="ToogleHorario" width="10px" height="10px" style="margin:0px 4px;">
+                            </div>
+                        </div>
+                        <div class="details-phone">
+                            <img src="/public/assets/icons/telefonoIcon.png" width="15px" height="15px" style="margin:0px 4px;">
+                            <div class="phone-text" id="phone-text">No posee</div>
+                        </div>
+                        <div class="details-site">
+                            <img src="/public/assets/icons/sitioIcono.png" width="15px" height="15px" style="margin:0px 4px;">
+                            <div class="site-text" id="site-text">Sin sitio web</div>
+                        </div>
+                    </div>
+                    <div class="body-button-right">
+                        <div class="favorite-icon" style="align-items: center;">
+                            <img src="/public/assets/icons/favoritosIcon.png" id= "favorito1" width="32px" height="32px" style="margin:0px 4px;">
+                        </div>
+                        <br>
+                        <div class="ckeck-icon" style="align-items: center;">
+                            <img src="/public/assets/icons/checked.png" id= "check" width="32px" height="32px" style="margin:0px 4px;">
+                        </div>
+                    </div>
+                </div>
+                <hr class="divisor"/>
+                <!--Imagenes de otros turistas-->
+                <div class="photos">
+                    <p class="subtitle">Fotos de otros turistas</p>
+                    <!--Carrusel de imágenes-->
+                    <div class="container-photos">
+                        <div id="noPhotos" class="noInfo"></div>
+                        <div class="photo-big" id="photo-big">
+                            <img src="/public/assets/icons/Lugarejemplo.PNG" id="foto1" width="128px" height="128px" style="margin:0px 4px;">
+                        </div>
+                        <div class="parPhoto1" id="parPhoto1">
+                            <div class="photo2" id="photo2">
+                            </div>
+                            <div class="photo3" id="photo3">
+                            </div>
+                        </div>
+                        <div class="parPhoto2" id="parPhoto2">
+                            <div class="photo4" id="photo4">
+                            </div>
+                            <div class="photo5" id="photo5">
+                            </div>
+                        </div>
+                        <div class="parPhoto3" id="parPhoto2">
+                            <div class="photo6" id="photo6">
+                            </div>
+                            <div class="photo7" id="photo7">
+                            </div>
+                        </div>
+                        <div class="parPhoto4" id="parPhoto2">
+                            <div class="photo8" id="photo8">
+                            </div>
+                            <div class="photo9" id="photo9">
+                            </div>
+                        </div>
+                        <div class="parPhoto5" id="parPhoto2">
+                            <div class="photo10" id="photo10">
+                            </div>
+                            <div class="photo11" id="photo11">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divisor1"/>
+                <!--Comentarios de otros turistas-->
+                <div class="comments">
+                    <p class="subtitle">Reseñas</p>
+                    <div class="noInfo" id="noReviews"></div>
+                    <div class="btn-group" role="group">
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: black;">&#9733;</span>
+                                <span class="star" style="color: black;">&#9733;</span>
+                                <span class="star" style="color: black;">&#9733;</span>
+                                <span class="star" style="color: black;">&#9733;</span>
+                            </a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: black;">&#9733;</span>
+                                <span class="star" style="color: black;">&#9733;</span>
+                                <span class="star" style="color: black;">&#9733;</span>
+                            </a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: black;">&#9733;</span>
+                                <span class="star" style="color: black;">&#9733;</span>
+                            </a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: black;">&#9733;</span>
+                            </a></li>
+                            <li><a class="dropdown-item" href="#">
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: gold;">&#9733;</span>
+                                <span class="star" style="color: gold;">&#9733;</span>
+                            </a></li>
+                        </ul>
+                    </div>
+
+                    <div class="comentario" id="comentario">
+                        <div class="comentario-perfil" id="comentario-perfil">
+                           <img src="/public/assets/icons/Perfil.png" width="32px" height="32px" style="margin:0px 4px; border-radius: 50%;">
+                        </div>
+                        <div class="comentario-contenido">
+                            <div class="user-dates">
+                                <div class="comentario-name" id="comentario-name">José Cervantes</div>
+                                <div class="comentario-cal" id="comentario-cal">
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                </div>
+                            </div>
+                            <div class="comentario-completo" id="comentario-completo">Siempre vengo a relajarme a este lugar.</div>
+                        </div>
+                    </div>
+
+                    <div class="comentario1" id="comentario1">
+                        <div class="comentario-perfil" id="comentario-perfil1">
+                            <img src="/public/assets/icons/Perfil.png" width="32px" height="32px" style="margin:0px 4px; border-radius: 50%;">
+                         </div>
+                         <div class="comentario-contenido">
+                             <div class="user-dates">
+                                 <div class="comentario-name" id="comentario-name1">José Cervantes</div>
+                                 <div class="comentario-cal" id="comentario-cal1">
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                 </div>
+                             </div>
+                             <div class="comentario-completo" id="comentario-completo1">Siempre vengo a relajarme a este lugar.</div>
+                         </div>
+                    </div>
+
+                    <div class="comentario2" id="comentario2">
+                        <div class="comentario-perfil" id="comentario-perfil2">
+                            <img src="/public/assets/icons/Perfil.png" width="32px" height="32px" style="margin:0px 4px; border-radius: 50%;">
+                         </div>
+                         <div class="comentario-contenido">
+                             <div class="user-dates">
+                                 <div class="comentario-name" id="comentario-name2">José Cervantes</div>
+                                 <div class="comentario-cal" id="comentario-cal2">
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                 </div>
+                             </div>
+                             <div class="comentario-completo" id="comentario-completo2">Siempre vengo a relajarme a este lugar.</div>
+                         </div>
+                    </div>
+
+                    <div class="comentario3" id="comentario3">
+                        <div class="comentario-perfil" id="comentario-perfil3">
+                            <img src="/public/assets/icons/Perfil.png" width="32px" height="32px" style="margin:0px 4px; border-radius: 50%;">
+                         </div>
+                         <div class="comentario-contenido">
+                             <div class="user-dates">
+                                 <div class="comentario-name" id="comentario-name3">José Cervantes</div>
+                                 <div class="comentario-cal" id="comentario-cal3">
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                 </div>
+                             </div>
+                             <div class="comentario-completo" id="comentario-completo3">Siempre vengo a relajarme a este lugar.</div>
+                         </div>
+                    </div>
+
+                    <div class="comentario4" id="comentario4">
+                        <div class="comentario-perfil" id="comentario-perfil4">
+                            <img src="/public/assets/icons/Perfil.png" width="32px" height="32px" style="margin:0px 4px; border-radius: 50%;">
+                         </div>
+                         <div class="comentario-contenido">
+                             <div class="user-dates">
+                                 <div class="comentario-name" id="comentario-name4">José Cervantes</div>
+                                 <div class="comentario-cal4" id="comentario-cal4">
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                </div>
+                             </div>
+                             <div class="comentario-completo" id="comentario-completo4">Siempre vengo a relajarme a este lugar.</div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Ventana modal de SearchBox -->
+    <div class="container-modal" id="cModalSearchBox">
+        <div class="content-modal">
+            <!-- Barra de busqueda -->  
+            <div class="container-search-box">         
+                <!-- Boton regresar/cerrar -->
+                <button type="button" id="btnClose" class="btn-icon" aria-label="Regresar">
+                    <img src="/public/assets/icons/flechaBack.png" alt="Regresar">
+                </button>
+                <!-- Input Barra de busqueda -->
+                <input class="form-control-search-box" id="SearchBox" type="text" placeholder="Busca un lugar o categoría">
+                <!-- Boton borrar busqueda -->
+                <button type="button" id="btnClear" class="btn-icon" aria-label="Borrar"
+                onclick="document.getElementById('SearchBox').value='' ">
+                <img src="/public/assets/icons/borrarIconNegro.png" width="30px" height="30px" alt="Borrar">
+                </button>
+            </div>
+            <!-- Resultados patrocinados -->
+            <div class="container-results" id="containerSponsored">
+                <hr class="hr-modal">
+                <div class="title-results">
+                    <h5 style="margin: 0">Patrocinados</h5>
+                    <img src="/public/assets/icons/promocionNegroIcon.png" width="16px" height="16px" style="margin-left: 4px;" alt="Patrocinados">
+                </div>
+                
+                    
+            </div>
+            <!-- Resultados de API Places -->
+            <div class="container-results" id="containerResultsPlaces">
+                <hr class="hr-modal">
+                <div class="title-results" style="margin-bottom: 0">
+                    <h5 style="margin: 0; font-weight: bold; font-size: medium;">Resultados cerca de ti</h5>
+                </div>
+                <div id="results">
+                    <!-- Aqui se insertan las casillas de autocompletado -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/public/js/toogle_modal.js"></script>
+    <script src="/public/js/EnCurso.js"></script>
+    <script src="/public/js/expandir.js"></script>
+    <!--<script src="js/itinerarioList.js"></script>-->
+    <script src="/public/js/expandir-weekend.js"></script>
+    <script type="module" src="/public/js/jquery-3.7.1.min.js"></script>
+    <script src="/public/js/botones.js"></script>
+    <script type="module" src="/public/ARCY-PRUEBAS/places2.js"></script>
+    <script src="/public/js/map.js"></script>
+    <!--<script src="js/itinerariosDes.js"></script>-->
+	<script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHOy3mcZGISeOqO2dYbPbmBEHplnudO-E&callback=initAutocomplete&libraries=places&v=weekly"
+        defer
+    ></script>
+    <script  type="module" src = /public/js/EnCurso.js></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>

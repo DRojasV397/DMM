@@ -1,0 +1,318 @@
+body {
+    margin: 0;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+
+
+.titleAP{
+    display: block;
+    font-size: 25px;
+    font-weight: bold;
+    justify-content: start;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #000000;
+    margin: 3%;
+    margin-top: 1%;
+  }
+
+  .titleAPcard{
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    justify-content: start;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+.CPAP{
+    margin-bottom: 3%;
+    margin-top: 0%;
+    height: 480px; /* Establecer altura fija */
+    overflow-y: auto; /* Habilitar desplazamiento vertical */
+}
+
+.cointainerAPcards {
+    height: auto;
+    max-height: 30%;
+}
+
+.cardLocationIcon {
+    width: 16px; /* o el tamaño que desees */
+    height: auto;
+  }
+
+  .boldTextUbication , .boldTextDuration{
+    font-weight: bold;
+  }
+
+  
+
+.cardsAP {
+    display: flex;
+    flex-direction: column;
+    background-color: #C0CBCD;
+    border-radius: 10px;
+    margin: 10px auto;
+    margin-top: 0px;
+    padding: 8px;
+    width: 300px; /* Ancho fijo como en la imagen proporcionada */
+    height: auto ;
+    position: relative;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.HeaderComplete{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.DinamicButton {
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    flex-grow: 1;
+    display: block; /* Para que el elemento a se comporte como un bloque */
+    width: 100%; /* Para que ocupe todo el ancho del contenedor */
+    text-align: center; /* Centra el texto dentro del bloque */
+    padding: 5px 8px; /* Ajusta el padding según sea necesario */
+    box-sizing: border-box; /* Asegúrate de que el padding no afecte el ancho total */
+    text-decoration: none;
+
+}
+
+
+.contDinamic{
+    background-color: #D57275; /* Color verde para el botón Continuar */
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.cardDate, .cardName {
+    font-size: 15px;
+}
+
+.cardLocation {
+    font-size: 12px;
+    white-space: nowrap; /* Mantén el texto en una sola línea */
+    overflow: hidden; /* Oculta cualquier contenido que sobrepase el ancho del elemento */
+    width: 170px;
+    cursor: pointer; /* Cambia el cursor para indicar que el elemento es interactivo */
+}
+
+.cardLocation:hover {
+    overflow-x: overlay; /* Permite desplazamiento horizontal al pasar el cursor */
+}
+
+/* Estilos para la barra de desplazamiento */
+.cardLocation::-webkit-scrollbar {
+    height: 5px; /* Altura de la barra de desplazamiento */
+    background: transparent; /* Fondo transparente */
+}
+
+.cardLocation::-webkit-scrollbar-thumb {
+    background: #888; /* Color del deslizador de la barra de desplazamiento */
+    border-radius: 10px; /* Bordes redondeados del deslizador */
+}
+
+.cardLocation::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color al pasar el cursor sobre el deslizador */
+}
+
+.cardMain {
+    display: flex;
+    align-items: stretch;
+}
+
+
+.cardImageLarge, .cardImageSmall {
+    height: 100%; /* Llena la altura del contenedor .cardImages */
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin distorsionarse */
+}
+.cardImages {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 10px; /* Espacio debajo de la cuadrícula de imágenes */
+}
+
+.cardImageLarge {
+    flex: 0 0 6%; /* Aproximadamente dos tercios del ancho */
+    width: 50%;
+    border-radius: 5px;
+    margin-right: 5px; /* Espacio entre la imagen grande y el grupo de imágenes pequeñas */
+}
+
+.cardImagesSmall, .cardImagesSmall2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-right: 5px;
+}
+
+.cardImageSmall {
+    width: 100%;
+    height: calc(100% - 5px);
+    margin-bottom: 5px; /* Espacio entre las imágenes pequeñas */
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* El último elemento no debe tener margen inferior */
+.cardImageSmall:last-child {
+    margin-bottom: 0;
+}
+
+
+.cardButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardButton {
+    display: flex;
+    align-items: center; /* Alinea los elementos internos en el centro verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    height: 30px; /* Altura definida para los botones */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    width: 100%;
+    padding: 0; /* Eliminar el padding para permitir que flexbox funcione */
+    box-sizing: border-box;
+    margin: 8px;
+    margin-right: 2px;
+}
+
+.cardResumen {
+    border: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 5px;
+}
+
+
+
+.continue {
+    background-color: #65B2C6; /* Color verde para el botón Continuar */
+    text-decoration: none;
+}
+
+.finish {
+    background-color: #D63D6C; /* Color rojo para el botón Finalizar */
+    text-decoration: none;
+}
+
+
+.create-adventure-container {
+    text-align: center; /* Centra el enlace en la página */
+}
+
+.create-adventure-link {
+    background-color: #D57275; /* Color de fondo del enlace */
+    color: white; /* Color del texto */
+    padding: 10px 30px; /* Espaciado interno del enlace */
+    text-align: center; /* Alinea el texto en el centro */
+    text-decoration: none; /* Elimina el subrayado del texto */
+    display: inline-block; /* Hace que el enlace sea un bloque en línea */
+    font-size: 16px; /* Tamaño del texto */
+    margin: 4px 2px; /* Margen alrededor del enlace */
+    cursor: pointer; /* Cambia el cursor a una mano cuando se pasa sobre el enlace */
+    border: none; /* Elimina el borde del enlace */
+    border-radius: 5px; /* Bordes redondeados */
+    transition-duration: 0.4s; /* Duración de la transición al cambiar de estilo */
+}
+
+/* Estilos para el contenedor del modal */
+.modal-dialog {
+    max-width: 500px; /* Cambia el ancho del modal */
+}
+
+/* Estilos para el contenido del modal */
+.modal-content {
+    background-color: #f8f9fa; /* Cambia el color de fondo */
+    border-radius: 15px; /* Esquinas redondeadas */
+    border: 2px solid #D63D6C; /* Borde del modal */
+}
+
+/* Estilos para el encabezado del modal */
+.modal-header {
+    background-color: #D63D6C; /* Cambia el color de fondo del encabezado */
+    color: white; /* Cambia el color del texto */
+}
+
+/* Estilos para el cuerpo del modal */
+.modal-body {
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Estilos para los botones del formulario */
+.modal-body .btn-primary {
+    width: 100%; /* Botón de ancho completo */
+    background-color: #D57275; /* Cambia el color de fondo del botón */
+    border: none; /* Sin borde */
+    font-weight: bold;
+}
+
+.deleteIcon {
+    position: absolute;
+    top: 5px; /* Ajusta la distancia desde la parte superior del contenedor */
+    right: -25px; /* Ajusta la distancia desde el lado derecho del contenedor */
+    cursor: pointer; /* Cambia el cursor a una mano al pasar sobre el icono */
+    width: 20px; /* Ajusta el ancho del icono */
+    height: 20px; /* Ajusta la altura del icono */
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.no-favorites-message {
+    background-color: #f2f2f2; /* Un gris claro para el fondo */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Una sombra suave */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Alinear texto al centro */
+    font-family: 'Arial', sans-serif; /* Tipo de letra */
+    color: #444; /* Color del texto */
+}
+
+.no-favorites-message p {
+    margin-bottom: 20px; /* Espacio debajo del párrafo */
+    font-size: 18px; /* Tamaño del texto */
+}
+
+.no-favorites-message button {
+    background-color: #D63D6C; /* Color rosa para el botón */
+    color: white; /* Letras blancas */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados para el botón */
+    padding: 10px 15px; /* Espaciado interno del botón */
+    font-size: 16px; /* Tamaño del texto del botón */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
+    cursor: pointer; /* Cursor tipo puntero */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+.no-favorites-message button:hover {
+    background-color: #ff85c1; /* Color rosa más claro al pasar el ratón */
+}

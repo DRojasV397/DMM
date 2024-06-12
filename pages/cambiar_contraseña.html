@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar contraseña</title>
+    <link rel="stylesheet" href="/pages/styles/style.css">
+    <link rel="stylesheet" href="/pages/styles/styles_register.css">
+    <script src="/pages/ARCY-PRUEBAS/recuperar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <img src="/pages/assets/icons/Logo.PNG" alt="Logo" class="logo">
+        <h1>Cambiar Contraseña</h1>
+        <form id="passwordRecover" action="#" method="post" novalidate>
+
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Ingresa tu nueva contraseña" required>
+                <img src="/pages/assets/icons/Boton ojoA.svg" id="togglePassword">
+            </div>
+
+            <div class="password-container">
+                <input type="password" id="passwordRE" name="passwordRE" placeholder="Confirma tu contraseña" required>
+                <img src="/pages/assets/icons/Boton ojoA.svg" id="togglePasswordRE">
+            </div>
+
+            <p>Elige una contraseña segura para proteger tu cuenta.</p>
+
+            <button type="submit" id="next">Siguiente</button>
+        </form>
+    </div>
+
+    <script src="/pages/js/Hide.js"></script>
+    <script src="/pages/js/validation_alterPassword.js"></script>
+</html>
+

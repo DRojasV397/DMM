@@ -1,0 +1,89 @@
+/* Estilos globales */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+    overflow-y: auto; /* Permite el desplazamiento de toda la página */
+}
+.titleAP{
+    display: block;
+    font-size: 25px;
+    font-weight: bold;
+    justify-content: start;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #000000;
+    margin: 3%;
+    margin-top: 1%;
+  }
+/* Contenedor de las tarjetas */
+#favodes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Espacio incrementado entre tarjetas */
+    margin-bottom: 20px;
+}
+
+/* Estilos para las tarjetas individuales */
+.favorite-card {
+    width: 100%;
+    max-width: 320px; /* Controla el ancho máximo */
+    margin: 0;
+    padding: 0px;
+    justify-content: start;
+    display: flex;
+    position: relative;
+    bottom: inherit;
+    background-color: #C0CBCD; /* Un azul muy tenue, casi blanco */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+.favorite-card:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.no-favorites-message {
+    background-color: #f2f2f2; /* Un gris claro para el fondo */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Una sombra suave */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Alinear texto al centro */
+    font-family: 'Arial', sans-serif; /* Tipo de letra */
+    color: #444; /* Color del texto */
+}
+
+.no-favorites-message p {
+    margin-bottom: 20px; /* Espacio debajo del párrafo */
+    font-size: 18px; /* Tamaño del texto */
+}
+
+.no-favorites-message button {
+    background-color: #D63D6C; /* Color rosa para el botón */
+    color: white; /* Letras blancas */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados para el botón */
+    padding: 10px 15px; /* Espaciado interno del botón */
+    font-size: 16px; /* Tamaño del texto del botón */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
+    cursor: pointer; /* Cursor tipo puntero */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+.no-favorites-message button:hover {
+    background-color: #ff85c1; /* Color rosa más claro al pasar el ratón */
+}
+
+
+/* Media queries para ajustar la vista en dispositivos móviles */
+@media (max-width: 600px) {
+    .favorite-card {
+        width: 100%; /* Asegura que las tarjetas abarquen todo el ancho disponible */
+        margin: 0; /* Elimina cualquier margen exterior */
+        padding: 5px; /* Ajusta el padding interior */
+        box-sizing: border-box; /* Asegura que el padding no aumente el ancho */
+    }
+}
+

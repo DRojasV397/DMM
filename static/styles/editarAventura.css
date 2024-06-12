@@ -1,0 +1,560 @@
+
+main{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box!important;
+}
+
+.general-info{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    padding: 4px;
+    padding-bottom: 0;
+}
+
+.cont-ginfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.inserted-ginfo{
+    margin-left: 4px;
+    overflow: hidden; 
+    white-space: normal; 
+    word-wrap: break-word; 
+}
+
+.header-o-ginfo{
+    display: flex;
+    align-items: center;
+    p{
+        margin-top: 4px;
+    }
+}
+
+/*Para drag and drop*/
+.kanban {
+    display: flex;
+    flex-grow: 1;
+    /*min-height: 400px;*/
+    width:100%;
+    gap: 5px;
+    padding: 0px;
+    justify-content: center;
+    /*height: 10px;*/
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    gap: 2px;
+    background-color: transparent;
+    min-width: 240px;
+    width: 100%;
+    max-width: 410px;
+    border-radius: 5px;
+    margin: 0;
+    /*margin-bottom:5%;*/
+    max-height: fit-content;
+}
+
+.dragging {
+    opacity: 1;
+}
+
+/*Contenedor con info de ruta y lugar*/
+.item.visited{
+    filter: grayscale(45%); /* Puedes ajustar el valor según tu preferencia */
+    /*opacity: 0.7;  Ajusta la opacidad según tu preferencia */
+    z-index: 50;
+    pointer-events: none;
+}
+.kanban li.visited::before{
+    background: var(--cblue) !important;
+}
+
+/*Para la linea con la numeracion de los lugares*/
+.kanban ol{
+    list-style: none;
+    counter-reset: item;
+    padding-left: 38px;
+    position: relative;
+}
+.kanban ol::after{
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: calc(100% - 150px);
+    left: 15px;
+    top: 0;
+    background: var(--coral);
+    margin-top: 85px;
+    border-radius: 10px;
+    z-index: 0;
+}
+
+.kanban li{
+    position: relative;
+    /*padding: 30px 0;
+    padding-left: 20px;*/
+    counter-increment: item;
+
+    /*--item-content: counter(item);*/
+}
+
+.kanban li::before{
+    content: counter(item);
+    /*content: var(--item-content);*/
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    background: var(--cwhite);
+    width: 18px;
+    height: 19px;
+    left: -34px;
+    top: 50%;
+    z-index: 100;
+    transform: translateY(-50%);
+    border-radius: 15px;
+    border: 6px solid var(--coral);
+    opacity: 1 !important;
+}
+
+.kanban li.dragging::before{
+    background: var(--cpink);
+    
+}
+
+/* Para el contenedor con información de ruta */
+.route{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 0.9rem;
+    height: 36px;
+}
+.distance-cont{
+    margin-top: 8px;
+    margin-left: 5%;
+    margin-right: 2.5%;
+    color: var(--coral);
+}
+
+.dropdown{
+    display: grid;
+    grid-template-rows: 90% 10%;
+    align-items: center;
+    height: 36px;
+}
+.btn-transport, .btn-transport-selected{
+    display: flex;
+    border: none;
+    border-radius: 10px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cblue);
+    margin: 6px 0;
+}
+.btn-transport-selected{
+    margin-inline: 2.5%;
+    transform: translateY(10%);
+}
+.btn-transport:hover, .btn-transport:active, .btn-transport-selected:hover, .btn-transport-selected:active{
+    background-color: #5497a8;
+}
+.transport-img{
+    width: 24px;
+    height: 24px;
+}
+.arrow{
+    margin: 2px 0 0 4%;
+    width: 10.273px;
+    height: 9px;
+    transition: 200ms;
+}
+.content-dropdown{
+    display: none;
+    position: relative;
+    background-color: var(--cblue);
+    border-radius:0 0 10px 10px;
+    transform: translateY(50%);
+    z-index: 100;
+}
+
+.content-dropdown-show{
+    display:flex;
+}
+
+.time-cont{
+    margin-top: 8px;
+    margin-inline: 2.5%;
+    color: var(--coral);
+}
+
+/*Para el contenedor con informacion del lugar*/
+.place-about{
+    display: grid;
+    grid-template-columns: 25% 65% 10%;
+    background-color: var(--cgray);
+    padding: 6px 6px 6px 6px;
+    border-radius: 10px;
+    /*height: fit-content;*/
+    margin-top:0;
+}
+
+.img-referente{
+    align-self: center;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    img{
+        flex-grow: 1;
+        max-width: 100%;
+        height: auto !important;
+        max-height: 100px;
+    }
+}
+
+.place-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /*height: 14px;*/
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.place-favorite{
+    display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.horario-status{
+    margin-right: 6px;
+}
+
+.horario-day{
+    overflow: hidden; /* Oculta el contenido que se desborda */
+  white-space: normal; /* Permite saltos de línea */
+  word-wrap: break-word; /* Permite dividir palabras que no caben en una línea */
+}
+
+#favorito, #favorito1, #check, #itinerario, #flecha, #ToogleHorario{
+cursor: pointer;
+}
+
+.info-add, .info-calification, .details-domicilio, .details-horario, .details-phone, .details-site, .details-score{
+    display: flex;
+    flex-direction: row;
+    height: 18px;
+    margin: 0px;
+    font-size: 12px;
+}
+
+.details-horario{
+    height: fit-content;
+    padding: 4px 0px;
+    .domicilio-text{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+.info-name{
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    justify-content: start;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.details-domicilio{
+    text-align: justify;
+    block-size: auto;
+    line-height:1em;
+    white-space: initial;
+    padding: 4px 0px;
+  }
+
+.favorite-icon{
+    display: flex;
+    align-items: center!important;
+    flex-wrap: wrap;
+    border: 0;
+    background-color: transparent;
+    padding: 0;
+    #eliminar{
+        margin-left:2px !important;
+        width: 100%;
+        max-width: 32px;
+        height: auto;
+    }
+    #dragIcon{
+        margin-left:2px !important;
+        height: 30px;
+    }
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#dragIcon{
+    transform: translateY(-70%);
+}
+
+.star {
+    color: #ccc;
+}
+
+.favorite-icon:hover, .favorite-icon:active + #eliminar{
+    /*transition: filter 0.3s ease;*/
+    filter: grayscale(15%);
+}
+
+
+@media screen and (max-width:396px){
+    #dragIcon{
+        transform: translateY(-100%);
+    }
+}
+
+@media screen and (max-width:322px){
+    #dragIcon{
+        transform: translateY(-120%);
+    }
+}
+
+/*Modal de Confirmacion*/
+.container-modal{
+    display: none; /*Oculto por defecto, se muestra en flex*/
+    width: 100%;
+    height: 100vh;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items:start;
+    z-index: 100;
+}
+
+.container-modal.active{
+    -webkit-backdrop-filter: blur(2px); /* Aplicar blur al fondo (Safari) */
+    backdrop-filter: blur(2px);
+}
+
+.content-modal{
+    position: relative;
+    background-color: var(--cgray);
+    width: 82%;
+    max-width: 480px;
+    border-radius: 15px;
+    top: 30%;
+    padding: 12px;
+}
+
+.btn-form{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+    padding: 10px;
+}
+
+.btn-cancel{
+    display: flex;
+    flex-wrap:wrap;
+    align-content: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 0;
+    background-color: var(--cpink);
+    color: white;
+    padding: 8px;
+    width: 45%;
+    height: auto;
+    transition:all 50ms ease;
+}
+.btn-cancel:active{
+    background-color: #b1345b;
+}
+
+.btn-save{
+    border-radius: 10px;
+    border: 0;
+    background-color: var(--cblue);
+    color: white;
+    padding: 8px;
+    width: 45%;
+}
+
+.btn-save:active{
+    background-color: #5393a3;
+}
+
+/* Para el menu */
+#openBtn {
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.container-modal-sidebar{
+display: flex; /*Oculto por defecto, se muestra en flex*/
+width: 100%;
+height: 100vh;
+background-color: transparent;
+position: fixed;
+top: 0;
+left: 0;
+justify-content: start;
+align-items:start;
+z-index: 1000;
+-webkit-backdrop-filter: blur(2px); /* Aplicar blur al fondo (Safari) */
+backdrop-filter: blur(2px);
+opacity: 0; /* Oculta el contenido */
+visibility: hidden;
+transition: 0.5s;
+}
+#sidebar {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 0%;
+    height: 100%;
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    border-radius: 0px 15px 15px 0px;
+    background-color:  #D63D6C;
+    transition: 0.5s;
+    padding: 60px 24px 24px 24px;
+}
+
+.user {
+    width: 172px;
+    height: 80px;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+    margin: 32px 0;
+}
+
+.sidebar-text{
+    width: 172px;
+    color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    white-space: nowrap;
+    bottom: 50px;
+}
+
+.btn-sidebar{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    width: 0%;
+    color: white;
+    margin-bottom: 4%;
+    padding: 2px 0px 4px 0px;
+    outline: none !important;
+    background-color: var(--cpink);
+    outline: none;
+    border: none;
+    transition: 0.5s;
+  }
+  
+  .btn-sidebar:active{
+    outline-color: transparent !important; /* Elimina el contorno predeterminado en algunos navegadores */
+    text-decoration: none !important;
+    background-color: #bf365f;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.01);
+    border-radius: 10px;
+    /*background-color: rgba(0, 0, 0, 0.1);*/
+  }
+
+  .sidebar-img{
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 22px;
+    margin-right: 4%;
+}
+
+
+.content-dropdown-lang{
+    list-style: none;
+    display: block;
+    width: 100%;
+    padding: 0;
+    opacity: 0;
+    transition: 0.2;
+    /*visibility: hidden;*/
+}
+
+
+#closeBtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 30px;
+    margin-left: 54px;
+    cursor: pointer;
+}
+
+/*Para cuando no hay lugares*/
+.message{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px; /* Espacio incrementado entre tarjetas */
+    padding: 20px 0; /* Ajusta el padding vertical */
+    margin-bottom: 20px;
+}
+
+.no-favorites-message {
+    background-color: #f2f2f2; /* Un gris claro para el fondo */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Una sombra suave */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Alinear texto al centro */
+    color: #444; /* Color del texto */
+}
+
+.no-favorites-message p {
+    margin-bottom: 20px; /* Espacio debajo del párrafo */
+    font-size: 18px; /* Tamaño del texto */
+}
+
+.no-favorites-message button {
+    background-color: #D63D6C; /* Color rosa para el botón */
+    color: white; /* Letras blancas */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados para el botón */
+    padding: 10px 15px; /* Espaciado interno del botón */
+    font-size: 16px; /* Tamaño del texto del botón */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para el botón */
+    cursor: pointer; /* Cursor tipo puntero */
+    transition: background-color 0.3s; /* Transición suave para el hover */
+}
+
+.no-favorites-message button:hover {
+    background-color: #ff85c1; /* Color rosa más claro al pasar el ratón */
+}
+

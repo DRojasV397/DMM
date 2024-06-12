@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="/public/styles/normalize.css">
+    <link rel="stylesheet" href="/public/styles/style.css">
+    <link rel="stylesheet" href="/public/styles/styles_login.css">
+    <script type="module" src="/public/js/connect_login.js"></script>
+    <script src="/public/ARCY-PRUEBAS/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css">
+</head>
+<body>
+    <div class="container">
+        <img src="/public//assets/icons/Logo.PNG" alt="Logo" class="logo">
+        <h1>Accede a tu cuenta</h1>
+        <form id="login" novalidate>
+            <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <img src="/public/assets/icons/Boton ojoA.svg" alt="Mostrar contraseña" id="togglePassword">
+                <a href="/pages/recuperacion_de_cuenta_ES.html" id="recuperation">No recuerdo mi contraseña</a>
+            </div>
+
+            <div class="registration-containter">
+                <p>¿No tienes una cuenta?</p>
+                <div class="registration-button">
+                    <br>
+                    <a href="/pages/registro_turista_ES.html" class="button-style">Registrate</a>
+                </div>
+            </div>
+
+            <button type="submit" id="next">Siguiente</button>
+        </form>
+    </div>
+    <script src="/public/js/Hide.js"></script>
+</body>
+</html>

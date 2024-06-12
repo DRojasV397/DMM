@@ -1,0 +1,914 @@
+#map {
+  /*overflow: auto!important;*/
+	height: 100%;
+  z-index: 0;
+}
+
+body {
+    font-family: 'Montserrat';
+    margin: 0;
+    padding: 0;
+    
+    overflow: hidden; 
+}
+
+main{
+  position: relative;
+}
+
+.container2 {
+    display: flex;
+    background-color: rgb(255, 255, 255);
+}
+
+.imageL {
+    margin-left: 21px;
+    margin-right: 6px;
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+}
+
+
+.container-1 {
+    
+    border-radius: 10px;
+    background-color: #D5C2BC; 
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    width: 123px;
+    height: 32px;
+    margin-left: 6px;
+    margin-right: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+
+.container-2 {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #D5C2BC; 
+    border-radius: 10px;
+    display: flex;
+    width: 123px;
+    height: 32px;
+    margin-left: 4px;
+    margin-right: 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.icon{
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.flecha-abajo{
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.container-text{
+    
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Profile{
+    width: 51px;
+    height: 51px;
+    flex-shrink: 0;
+    border-radius: 51px;
+    margin-left: 133.4px;
+}
+
+.user {
+    width: 172px;
+    height: 80px;
+    flex-shrink: 0;
+    color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal; 
+    margin: 32px 0;
+}
+
+.sidebar-text{
+    width: 172px;
+    color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    white-space: nowrap;
+    bottom: 50px;
+}
+
+.btn-sidebar{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  width: 0%;
+  color: white;
+  margin-bottom: 4%;
+  padding: 2px 0px 4px 0px;
+  outline: none !important;
+  background-color: var(--cpink);
+  outline: none;
+  border: none;
+  transition: 0.5s;
+}
+
+.btn-sidebar:active{
+  outline-color: transparent !important; /* Elimina el contorno predeterminado en algunos navegadores */
+  text-decoration: none !important;
+  background-color: #bf365f;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.01);
+  border-radius: 10px;
+  /*background-color: rgba(0, 0, 0, 0.1);*/
+}
+
+.sidebar-img{
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 22px;
+    margin-right: 4%;
+}
+
+.sidebar-fav{
+    margin: 2px 0 0 4%;
+    width: 10.273px;
+    height: 9px;
+}
+
+#openBtn {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.container-modal-sidebar{
+  display: flex; /*Oculto por defecto, se muestra en flex*/
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: start;
+  align-items:start;
+  z-index: 100;
+  -webkit-backdrop-filter: blur(2px); /* Aplicar blur al fondo (Safari) */
+  backdrop-filter: blur(2px);
+  opacity: 0; /* Oculta el contenido */
+  visibility: hidden;
+  transition: 0.5s;
+}
+
+#sidebar {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 0%;
+  height: 100%;
+  position: absolute;
+  z-index: 150;
+  top: 0;
+  left: 0;
+  border-radius: 0px 15px 15px 0px;
+  background-color:  #D63D6C;
+  transition: 0.5s;
+  padding: 60px 24px 24px 24px;
+}
+
+
+
+.closeBtn {
+  padding:0;
+  text-decoration: none;
+  font-size: 25px;
+  color: #f1f1f1;
+  display: block;
+  transition: 0.3s;
+}
+
+.closeBtn:hover {
+  color: black;
+}
+
+#filters{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 15%;
+  height: 5%;
+  position: absolute;
+  top: 1%;
+  left: 84%;
+  border-radius: 10px 10px 10px 10px;
+  background-color:  #D63D6C;
+  transition: 0.5s;
+  padding: 7px 0px 7px 0px;
+}
+
+.filterBtn {
+  padding:0;
+  text-decoration: none;
+  font-size: 14px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  background: none;
+  border: none;
+}
+
+.filterBtn:hover {
+  color: white;
+  background: none;
+  border: none;
+}
+
+#filtelBtn{
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 30px;
+  margin-left: 0px;
+  cursor: pointer;
+}
+
+#filters-expanded {
+  width: 85%;
+  min-height: 89%;
+  position: absolute;
+  z-index: 9000;
+  top: 7%;
+  left: 9%;
+  border-radius: 10px 10px 10px 10px;
+  transition: 0.5s;
+  padding: 7px 0px 7px 0px;
+  background-color: #C0CBCD;
+  display: none;
+  flex-direction: column;
+  text-align: center;
+  max-height: 0;
+  transition: max-height 0.5s ease-in-out;
+}
+
+#contenedorMamalonFiltros{
+  height: 500px;
+  overflow-x: overlay;
+}
+
+#filterOptions::-webkit-scrollbar {
+  width: 10px;
+}
+
+#filterOptions::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 15px;
+}
+
+#filterOptions::-webkit-scrollbar-thumb {
+  background-color: #C0CBCD;
+  border-radius: 20px;
+  border: 3px solid white;
+} 
+
+#filterOptions{
+  overflow-y: scroll;
+  padding: 5px;
+  text-align: left;
+  font-size: 14px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#filterOptions div {
+  flex-basis: 100%;
+}
+
+@media (min-width: 600px) {
+  #filterOptions div {
+      flex-basis: 50%;
+  }
+}
+
+@media (min-width: 1024px) {
+  #filterOptions div {
+      flex-basis: 33.33%;
+  }
+}
+
+.filtersSummit{
+  margin: 4px;
+  border-radius: 10px;
+  width: 140px;
+  height: 22px;
+  border: none;
+  color: white
+}
+
+#filtersSummit{
+  /* margin-top: 10px; */
+}
+
+#filterSend{
+  background-color:#D63D6C;
+}
+
+#filterErase{
+  color: black;
+  background-color:#f1f1f1;
+}
+
+.noInfo{
+  padding-left: 10px;
+}
+
+#closeBtn {
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 30px;
+  margin-left: 54px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  
+  font-size: 9px; /* Ajusta el tamaño de la fuente del botón */
+}
+
+.dropdown button {
+  
+  background-color: #D5C2BC; /* Cambia el color de fondo del botón */
+  color: #000000; /* Cambia el color del texto del botón */
+  border: none; /* Quita el borde del botón */
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  
+}
+
+.dropdown-Text1{
+  font-size: 11px;
+
+}
+
+.dropdown-Text2{
+  font-size: 16px;
+
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 120px; /* Ajusta el ancho mínimo del dropdown */
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 8px 12px; /* Ajusta el padding de las opciones del dropdown */
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Mostrar el dropdown al pasar el ratón sobre el contenedor */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.content-dropdown-lang{
+  list-style: none;
+  display: block;
+  width: 100%;
+  padding: 0;
+  opacity: 0;
+  transition: 0.2;
+  /*visibility: hidden;*/
+}
+
+.Msg-recomendar{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+.card{
+  display: none;
+  padding-left: 2px;
+  border-radius: 10px; /* Ajusta el valor según tu preferencia */
+  background-color: #C0CBCD !important; /* Cambia el color de fondo del botón */
+  width: 320px !important;
+  /*height: 163px;*/
+  position: absolute;
+  /*bottom: 10%;*/
+  left: 50%;
+  transform: translateX(-50%);
+  margin: auto;
+  border: none;
+  transition: all 0.5s ease;
+  justify-content: space-between;
+  transition: height 0.5s ease; /* Añade transición para suavizar el cambio de altura */
+}
+
+.btn-sponsored.expanded {
+  width: 312px;
+  height: 542px !important;
+}
+
+#ToogleExpandir{
+  width: 30px;
+  position: relative;
+  left: 45%;
+  padding: 6px;
+  cursor: pointer;
+}
+
+.place-favorite, .favorito{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.favorito{
+  position: relative;
+  right: 3px;
+}
+
+#favorito, #favorito1, #check, #itinerario, #flecha, #ToogleHorario{
+  cursor: pointer;
+}
+
+#selectorItinerario{
+  a{
+    padding-inline: 0;
+    overflow: auto;
+  }
+  .dropdown-menu.show{
+    width: 104%;
+  }
+} 
+.dropdown-menu{
+  padding-inline: 8px;
+}
+#selectorItinerario.dropdown-toggle::after{
+    display: none !important;
+}
+
+.info-add, .place-favorite, .info-calification, .details-domicilio, .details-horario, .details-phone, .details-site, .details-score{
+  display: flex;
+  flex-direction: row;
+  height: 18px;
+  margin: 0px;
+  font-size: 12px;
+  padding-bottom: 4px;
+}
+
+.details-score{
+  display: flex;
+  font-size: 16px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.img-referente, .img-referente1{
+  align-self: auto;
+  display: flex;
+  align-items: center;
+}
+
+/*.info-add{
+  margin-bottom: 6px;
+}*/
+
+.place-comentario{
+  align-items: flex-end;
+}
+
+.info-name{
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  justify-content: start;
+  max-width: 190px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-bottom: 20px;
+}
+
+.place-about, .place-comentario{
+  width: 100%;
+  max-width: 472px;
+  margin: 0;
+  padding: 0px;
+  justify-content: start;
+  display: flex;
+  position: relative;
+  bottom: inherit;
+}
+
+.comentario-user{
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.place-comentario{
+  align-items: center;
+  max-width: 300px;
+  padding-top: 16px;
+}
+
+.place-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 14px;
+  margin-left: 5px;
+  font-size: 12px;
+  width: 250px;
+}
+
+.place-favorite{
+  width: 50px;
+  height: 65px;
+}
+
+.info-more, .info-horario{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 14px;
+  margin: 0px;
+  font-size: 12px;
+}
+
+.comentario-texto{
+  font-size: 12px;
+  margin: 0px;
+  padding: 0px;
+  justify-content: start;
+  display: flex;
+  position: relative;
+  bottom: inherit;
+}
+
+.place-header-about{
+  margin-bottom: 10px;
+  block-size: auto;
+  max-width: 95%;
+  padding-left: 1.5%;
+  justify-content: start;
+  display: none;
+}
+
+.header-name{
+  display: flex;
+  align-items: center;
+  font-size: 177%;
+  font-weight: bold;
+  text-align: center;
+  max-width: 71%;
+  hyphens: auto;
+  line-height:1em;
+}
+
+.place-body-details{
+  display: none;
+  width: 90%;
+  padding-left: 3%;
+  margin: 0;
+  justify-content: space-between;
+  position: relative;
+}
+
+.body-details{
+  max-width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.body-button-left, .body-button-right{
+  padding-block: 20px;
+  max-width: 12%;
+  display: flex;
+  align-items: center!important;
+  flex-wrap: wrap;
+}
+
+.site-text{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  line-height: 1em;
+}
+
+.photos{
+  display: none;
+}
+
+.subtitle{
+  padding-left: 6px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.divisor, .divisor1{
+  margin: 3%;
+  border: 1px solid #000000;
+  display: none;
+  height: 1px;
+  color: #000000;
+  background-color: #000000;
+}
+
+.comments{
+  display: none;
+}
+
+.more-direction{
+  max-width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.comentario-texto{
+  display: block;
+  max-width: 260px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.favorite-icon{
+  display: flex;
+  align-items: center!important;
+  flex-wrap: wrap;
+}
+
+.details-domicilio{
+  /*text-align: justify; */
+  block-size: auto;
+  line-height:1.2em;
+  white-space: initial;
+}
+
+.weekend-text{
+  display: none;
+  min-height: 140px;
+  block-size: auto;
+  min-width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.photos{
+  max-width: 99%;
+  justify-content: start;
+  padding-left: 1.5%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.details-site{
+  block-size: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.details-horario{
+  block-size: auto;
+}
+
+.photos{
+  display: none;
+}
+
+.container-photos{
+  display: -webkit-inline-box;
+  width: 100%;
+  margin: 0;
+  padding: 0px;
+  justify-content: start;
+  position: relative;
+  bottom: inherit;
+  overflow-x: scroll;
+}
+
+#button-calificacion{
+    margin-left: 15px;
+    margin-bottom: 20px;
+    padding-left: 6px;
+    background-color: #65B2C6;
+    height: 29px !important;
+    width: 158px !important;
+    color: black;
+    font-size: 14px;
+    border-radius: 30px;
+    cursor: pointer;  
+    outline:none;
+    border: none;
+}
+
+.comments{
+  flex-direction: column;
+}
+
+.card-expandida{
+  max-width: 312px;
+  /* max-height: 530px !important; */
+  /* overflow: hidden; */
+   overflow-y: scroll;
+}
+
+.comentario, .comentario1, .comentario2, .comentario3, .comentario4{
+  margin-left: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  padding-left: 2px;
+  border-radius: 10px;
+  background-color: #EFEDED !important;
+  width: 278px !important;
+  justify-content: start;
+  position: relative;
+}
+
+.comentario-perfil{
+  max-width: 15%;
+  display: flex;
+  align-items: center!important;
+  flex-wrap: wrap;
+}
+
+.horario-text{
+  line-height: 1em;
+}
+
+.user-dates{
+  display: flex;
+  justify-content: space-between;
+}
+
+.comentario-contenido{
+  padding-top: 6px;
+  max-width: 76%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.comentario-name{
+  display: block;
+  max-width: 60%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.comentario-completo{
+  display: flex;
+  line-height: 1em;
+  font-size: 12px;
+  padding-bottom: 6px;
+  flex-direction: column;
+}
+
+.card-expandida::-webkit-scrollbar {
+  width: 10px;               /* width of the entire scrollbar */
+}
+
+.card-expandida::-webkit-scrollbar-track {
+  background-color: white;
+  border-radius: 15px;
+}
+
+.card-expandida::-webkit-scrollbar-thumb {
+  background-color: #C0CBCD;    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid white;  /* creates padding around scroll thumb */
+}
+
+  .container-photos::-webkit-scrollbar {
+    width: 10px;               /* width of the entire scrollbar */
+  }
+  
+  .container-photos::-webkit-scrollbar-track {
+    background-color: #C0CBCD;
+  }
+  
+  .container-photos::-webkit-scrollbar-thumb {
+    background-color: #C0CBCD;    /* color of the scroll thumb */
+    border: 0px solid #C0CBCD;  /* creates padding around scroll thumb */
+  }
+
+  .divisor1{
+    margin-top: 0%;
+  }
+
+  .more-type{
+    max-width: 80px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .horario-detalles{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .star {
+    color: #ccc;
+  }
+
+  .btn btn-primary dropdown-toggle{
+    height: 158px;
+  }
+
+  .btn-group-vertical>.btn, .btn-group>.btn {
+    flex: 0.52 !important;
+  }
+
+  .dropdown-menu.show {
+    background-color: #65b2c6 !important;
+  }
+
+  .visitado{
+    height: 1px;
+    display: none;
+    color: red;
+    font-weight: bold;
+    position: static;
+    transform: translate(8%, -5000%);
+  }
+
+  .header-img{
+    display: grid;
+    align-items: center;
+  }
+
+
+  /*************************Seccion para filtros*************************/
+
+  /* Estilo básico para los checkboxes */
+/* Estilo general para los checkbox como botones */
+.checkbox-button {
+  display: none; /* Oculta el checkbox original */
+}
+
+.checkbox-button + label {
+  display: inline-block; /* Hace que el label sea un bloque en línea */
+  padding: 5px 10px; /* Espaciado interno */
+  margin: 2px; /* Espacio entre botones */
+  background-color: #f0f0f0; /* Color de fondo */
+  color: #333; /* Color del texto */
+  border: 1px solid #ddd; /* Borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor a tipo puntero */
+  transition: all 0.3s ease; /* Transición suave para efectos */
+}
+
+/* Estilo cuando el checkbox está marcado */
+.checkbox-button:checked + label {
+  background-color: #D63D6C; /* Color de fondo cuando está marcado */
+  color: white; /* Color del texto cuando está marcado */
+  border-color: #D63D6C; /* Color del borde cuando está marcado */
+}
+
+
+
+#recommendedFilters, #moreFilters{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+

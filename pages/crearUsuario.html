@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear turista - Administrador</title>
+    <link rel="stylesheet" href="/public/styles/normalize.css">
+    <link rel="stylesheet" href="/public/styles/style.css">
+    <link rel="stylesheet" href="/public/styles/styles_register.css">
+    <script src="/public/ARCY-PRUEBAS/register.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    
+</head>
+<body>
+    <header>
+        <div class="navbar" >
+            <!-- Boton regresar a cuentas -->
+            <a href="/pages/Cuentas.html" class="btn-icon">
+                <img src="/public/assets/icons/flechaBack.png" alt="Buscar">
+            </a>
+
+            <img src="/public/assets/icons/Logo.PNG" class="img-nav">
+        </div>
+        
+        <div class="page-title">
+            <h2 class="h1-title">Registrar turista</h2>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Ingresa los datos</h1>
+            <form action="#" method="get" id="loginFormRegister">
+                <input type="text" id="name" name="name" placeholder="Nombre(s)" required>
+                <input type="text" id="lastname" name="lastname" placeholder="Apellidos" required>
+                <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+    
+                <div class="password-container">
+                    <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                    <img src="/public/assets/icons/Boton ojoA.svg" alt="Mostrar contraseña" id="togglePassword">
+                </div>
+                <div class="password-container">
+                    <input type="password" id="passwordRE" name="passwordRE" placeholder="Confirmar contraseña" required>
+                    <img src="/public/assets/icons/Boton ojoA.svg" alt="Mostrar contraseña" id="togglePasswordRE">
+                </div>
+    
+                <div class="container-date-gene">
+                    <div class="datebirth">
+                        <label for="birthdate">Fecha de nacimiento</label>
+                        <input type="date" id="birthdate" placeholder="Nacimiento">
+                    </div>
+                </div>
+    
+                <button type="submit" id="next">Registrar</button>
+            </form>
+        </div>
+
+    </main>
+
+    <script type="module" src="/public/js/Hide.js"></script>
+    <script src="/public/js/validation_register.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Aventura</title>
+    <link rel="stylesheet" href="/public/styles/normalize.css">
+    <link rel="stylesheet" href="/public/styles/style.css">
+    <link rel="stylesheet" href="/public/styles/editarAventura.css">
+    <script src="/public/ARCY-PRUEBAS/admin.js"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar" >
+            <span id="openBtn" class="btn-icon" onclick="openNav()" >&#9776;</span>
+
+            <img src="/public/assets/icons/Logo.PNG" class="img-nav" alt="Logo" id="logoImage">
+
+            <!-- Ahora boton de regresar -->
+            <button type="button" id="btnTriggerSB" class="btn-icon" onclick="window.location.href='/pages/Aventuras_proximas.html'">
+                <img src="/public/assets/icons/regresar.png" alt="Buscar" class="img-nav">
+            </button>
+        </div>
+        <div class="page-title">
+            <h2 class="h1-title" id="adventureName"></h2>
+        </div>
+        <div class="container-modal-sidebar" id="modalSidebar">
+            <div id="sidebar" class="sidebar">
+                <div class="user">
+                    <p>Hola, </p><b id="nombreUsuario"> NOMBRE </b> 
+                </div>
+                <div class="sidebar-text">
+                    <a href="/pages/Aventuras_proximas.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/itinerarioIcono.png" class="sidebar-img"> Aventuras 
+                    </a>
+                    <a href="/pages/MisFavoritos.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/favoritosBlancoRosa.png" class="sidebar-img"> Lugares favoritos 
+                    </a>
+                </div>
+
+                <div class="sidebar-text" style="margin-top: auto;">
+                    <a href="/pages/perfilTurista.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/engraneIcon.png" class="sidebar-img"> Cuenta 
+                    </a>
+                    <a href="#" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/Bandera.png" class="sidebar-img" style="border-radius: 0;"> Enviar comentarios <br>de la aplicación
+                    </a>
+                    <a href="/pages/login_ES.html" class="btn-sidebar"> 
+                        <img src="/public/assets/icons/cerrarIcono.png" class="sidebar-img"> Cerrar Sesión 
+                    </a>
+                </div>
+                <button type="button" id="closeBtn" class="closeBtn btn-icon" onclick="closeNav()">&times;</a>
+            </div>
+        </div>  
+    </header>
+    <main>
+        <div class="general-info">
+            <div class="cont-ginfo">
+                <div class="header-o-ginfo">
+                    <img src="/public/assets/icons/origenIcon.png" width="24px" height="24px">
+                    <p style="margin-top: 4px;"><b >Empieza en:</b></p>
+                </div>
+                <p id="origin" class="inserted-ginfo">Tu ubicación</p>
+            </div>
+            <div class="cont-ginfo">
+                <div class="header-o-ginfo">
+                    <img src="/public/assets/icons/reloj3.png" width="24px" height="24px">
+                    <p style="margin: 4px 0 0 4px;"><b >Duración:</b></p>
+                </div>
+                <p id="length" class="inserted-ginfo" style="text-align: end;"><div id="duracionTotal"></div></p>
+            </div>
+        </div>
+        <div class="kanban">
+            <ol class="column" id="placesList">
+                <!-- Aqui se insertan los lugares-->
+                
+                
+            </ol>
+        </div>
+        <div class="btn-form" style="display: flex !important;">
+            <button type="button" class="btn-save" id="btnSave">
+                <b>Guardar cambios</b>
+            </button>
+            <a href="/pages/Aventuras_proximas.html" class="btn-cancel" id="btnCancel">
+                <b>Cancelar</b> 
+            </a>          
+        </div>
+        <div id="auxPlaces" style="display: none;"></div>
+    </main>
+    <script type="module" src="/public/js/jquery-3.7.1.min.js"></script>
+    <script src="/public/js/sidebar.js"></script>
+    <script src="/public/js/DragDropTouch.js"></script>
+    <script type="module" src="/public/js/dragNdrop.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    <script type="module" src="/public/js/editarAventura.js"></script>
+    <script type="module" src="/public/js/routesEditAdvn.js"></script>
+    <script 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHOy3mcZGISeOqO2dYbPbmBEHplnudO-E&callback=initAutocomplete&libraries=places&v=weekly"
+        defer
+    ></script>
+    
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <link rel="stylesheet" href="/public/styles/normalize.css">
+    <link rel="stylesheet" href="/public/styles/style.css">
+    <link rel="stylesheet" href="/public/styles/styles_register.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <img src="/public/assets/icons/Logo.PNG" alt="Logo" class="logo">
+        <h1>Ingresa tus datos</h1>
+        <form action="#" method="post" id="loginFormRegister">
+            <input type="text" id="name" name="name" placeholder="Nombre(s)">
+            <input type="text" id="lastname" name="lastname" placeholder="Apellidos">
+            <input type="email" id="email" name="email" placeholder="Correo electrónico">
+
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Contraseña">
+                <img src="/public/assets/icons/Boton ojoA.svg" alt="Mostrar contraseña" id="togglePassword">
+            </div>
+            <div class="password-container">
+                <input type="password" id="passwordRE" name="passwordRE" placeholder="Confirmar contraseña">
+                <img src="/public/assets/icons/Boton ojoA.svg" alt="Mostrar contraseña" id="togglePasswordRE">
+            </div>
+
+            <div class="container-date-gene">
+                <div class="datebirth">
+                    <label for="birthdate">Fecha de nacimiento</label>
+                    <input type="date" id="birthdate" placeholder="Nacimiento">
+                </div>
+            </div>
+
+            <button type="submit" id="next">Siguiente</button>
+        </form>
+    </div>
+    <script src="/public/js/Hide.js"></script>
+    <script src="/public/js/validation_register.js"></script>
+</body>
+</html>

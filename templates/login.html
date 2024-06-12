@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="../static/styles/normalize.css">
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" href="../static/styles/styles_login.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css">
+</head>
+<body>
+    <div class="container">
+        <img src="../static/assets/icons/Logo.PNG" alt="Logo" class="logo">
+        <h1>Accede a tu cuenta</h1>
+
+        <!-- Aquí agregamos un bloque para mostrar los mensajes flash -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <script>
+                        Swal.fire({
+                            icon: '{{ category }}',
+                            text: '{{ message }}',
+                            showConfirmButton: false,
+                            timer: 3000 
+                        });
+                    </script>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <img src="../static/assets/icons/Boton ojoA.svg" alt="Mostrar contraseña" id="togglePassword">
+                <a href="/pages/recuperacion_de_cuenta_ES.html" id="recuperation">No recuerdo mi contraseña</a>
+            </div>
+
+            <div class="registration-containter">
+                <p>¿No tienes una cuenta?</p>
+                <div class="registration-button">
+                    <br>
+                    <a href="/register" class="button-style">Registrate</a>
+                </div>
+            </div>
+
+            <button type="submit" id="next">Siguiente</button>
+        </form>
+    </div>
+    <script src="../static/js/js/Hide.js"></script>
+</body>
+</html>
