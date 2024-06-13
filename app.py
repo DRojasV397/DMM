@@ -20,24 +20,6 @@ users_ref = db.collection('users')
 def index():
     return redirect(url_for('login'))
 
-@app.route('/home', methods=['GET', 'POST'])
-def home():
-    user_id = request.cookies.get('user_id')
-    
-    if user_id:
-        user_ref = users_ref.document(user_id)
-        user_data = user_ref.get().to_dict()
-        
-        if user_data:
-            user_name = user_data.get('name', 'Usuario')  # Obtener el nombre del usuario o establecer un valor por defecto
-            return render_template('home.html', user_name=user_name)
-        else:
-            flash('No se encontraron datos para el usuario.', 'danger')
-            return redirect(url_for('login'))
-    else:
-        return redirect(url_for('login'))
-
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -88,6 +70,16 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    user_id = request.cookies.get('user_id')
+    
+    if user_id:
+        user_ref = users_ref.document(user_id)
+        user_data = user_ref.get().to_dict()
+        
+        if user_data:
+            user_name = user_data.get('name', 'Usuario')
+            return render_template('home.html', user_name=user_name)
+
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
@@ -109,6 +101,21 @@ def login():
             flash(f'Error iniciando sesión: {str(e)}', 'danger')
     return render_template('login.html')
 
+
+@app.route('/home', methods=['GET', 'POST'])
+def home():
+    user_id = request.cookies.get('user_id')
+    if user_id:
+        user_ref = users_ref.document(user_id)
+        user_data = user_ref.get().to_dict()
+        if user_data:
+            user_name = user_data.get('name', 'Usuario')
+            return render_template('home.html', user_name=user_name)
+        else:
+            return redirect(url_for('login'))
+    else:
+        return redirect(url_for('login'))
+
 @app.route('/logout')
 def logout():
     # Creas una respuesta para redireccionar a la página de login
@@ -116,6 +123,138 @@ def logout():
     # Borras la cookie 'user_id' estableciéndola como vacía y con una fecha en el pasado
     response.set_cookie('user_id', '', expires=0)
     return response
+
+@app.route('/myAccount', methods=['GET', 'POST'])
+def myAccount():
+    user_id = request.cookies.get('user_id')
+    if user_id:
+        user_ref = users_ref.document(user_id)
+        user_data = user_ref.get().to_dict()
+        if user_data:
+            user_name = user_data.get('name', 'Usuario')
+            user_lastname = user_data.get('lastname', '')
+            user_email = user_data.get('email', '')
+            return render_template('myAccount.html', user_name=user_name, user_email=user_email, user_lastname=user_lastname)
+        else:
+            return redirect(url_for('login'))
+    else:
+        return redirect(url_for('login'))
+
+@app.route('/updateEmail', methods=['POST'])
+def updateEmail():
+    user_id = request.cookies.get('user_id')
+    if not user_id:
+        return redirect(url_for('login'))
+
+    new_email = request.form['email']
+    if not validar_email(new_email):
+        flash('El correo electrónico no es válido.', 'error')
+        return redirect(url_for('myAccount'))
+
+    try:
+        user_ref = users_ref.document(user_id)
+        user_data = user_ref.get().to_dict()
+        if user_data:
+            # Update Firebase Authentication user
+            auth.update_user(user_id, email=new_email)
+
+            # Update Firestore user document
+            user_ref.update({'email': new_email})
+            flash('Correo electrónico actualizado correctamente.', 'success')
+        else:
+            flash('Error al actualizar el correo electrónico.', 'error')
+    except Exception as e:
+        flash(f'Error actualizando correo electrónico: {str(e)}', 'error')
+
+    return redirect(url_for('myAccount'))
+
+@app.route('/updatePassword', methods=['POST'])
+def updatePassword():
+    user_id = request.cookies.get('user_id')
+    if not user_id:
+        return redirect(url_for('login'))
+
+    new_password = request.form['password']
+    if not validar_contrasena(new_password):
+        flash('La contraseña no cumple con los requisitos.', 'error')
+        return redirect(url_for('myAccount'))
+
+    try:
+        hashed_password = generate_password_hash(new_password, method='pbkdf2:sha256')
+        user_ref = users_ref.document(user_id)
+        user_data = user_ref.get().to_dict()
+        if user_data:
+            # Update Firebase Authentication user
+            auth.update_user(user_id, password=new_password)
+
+            # Update Firestore user document
+            user_ref.update({'password': hashed_password})
+            flash('Contraseña actualizada correctamente.', 'success')
+        else:
+            flash('Error al actualizar la contraseña.', 'error')
+    except Exception as e:
+        flash(f'Error actualizando contraseña: {str(e)}', 'error')
+
+    return redirect(url_for('myAccount'))
+
+@app.route('/updateName', methods=['POST'])
+def updateName():
+    user_id = request.cookies.get('user_id')
+    if not user_id:
+        return redirect(url_for('login'))
+
+    new_name = request.form['name']
+
+    try:
+        user_ref = users_ref.document(user_id)
+        user_ref.update({'name': new_name})
+        flash('Nombre actualizado correctamente.', 'success')
+    except Exception as e:
+        flash(f'Error actualizando nombre: {str(e)}', 'error')
+
+    return redirect(url_for('myAccount'))
+
+
+@app.route('/updateLastName', methods=['POST'])
+def updateLastName():
+    user_id = request.cookies.get('user_id')
+    if not user_id:
+        return redirect(url_for('login'))
+
+    new_lastname = request.form['lastname']
+
+    try:
+        user_ref = users_ref.document(user_id)
+        user_ref.update({'lastname': new_lastname})
+        flash('Apellido actualizado correctamente.', 'success')
+    except Exception as e:
+        flash(f'Error actualizando apellido: {str(e)}', 'error')
+
+    return redirect(url_for('myAccount'))
+
+
+@app.route('/deleteAccount', methods=['POST'])
+def deleteAccount():
+    user_id = request.cookies.get('user_id')
+    if not user_id:
+        return redirect(url_for('login'))
+
+    try:
+        # Delete from Firebase Authentication
+        auth.delete_user(user_id)
+
+        # Delete from Firestore
+        users_ref.document(user_id).delete()
+
+        # Clear session and redirect to login
+        response = make_response(redirect(url_for('login')))
+        response.set_cookie('user_id', '', expires=0)
+        flash('Cuenta eliminada correctamente.', 'success')
+        return response
+    except Exception as e:
+        flash(f'Error al eliminar la cuenta: {str(e)}', 'error')
+        return redirect(url_for('myAccount'))
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))

@@ -526,32 +526,6 @@ function removeHighlight(field) {
     field.style.borderColor = ''; // Reset to default
 }
 
-async function fetchGetUser(idTurista){
-    try {
-        const response = await fetch(`https://backend-dev-tfdp.4.us-1.fl0.io/api/usuarioTurista/identificador/${idTurista}`, {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        });
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching delete adventure places:', error);
-    }
-}
-
-async function fetchChangePW(idTurista,newPassword){
-    try {
-        const response = await fetch(`https://backend-dev-tfdp.4.us-1.fl0.io/api/usuarioTurista/cambiarContrasena`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id_Turista: idTurista, Contrasena: newPassword })
-        });
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching delete adventure places:', error);
-    }
-}
 
 async function alertsChangePw(idTurista,newPassword){
     const res = await fetchChangePW(idTurista,newPassword)
@@ -592,51 +566,4 @@ function TTogglePasswordRE(){
         // Cambia la imagen del botón
         togglePasswordRE.src = type === 'password' ? '/public/assets/icons/Boton ojoA.svg' : '/public/assets/icons/Boton ojoC.svg';
     }
-}
-
-function doDeleteAcc(){
-    // Si se quiere borrar la cuenta
-    deleteAcc(idTurista)
-}
-
-// Para borrar la cuenta
-async function deleteAcc(idTurista){
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get('userId');
-    if(userId === null){
-        //fetch eliminar
-        try{
-            const res = await fetch(`https://backend-dev-tfdp.4.us-1.fl0.io/api/deleteUsuario/${idTurista}`)
-            if(!res?.ok){
-                throw new Error('Se perdio comunicación con la base de datos.')
-            }
-            // Si se pudo eliminar
-            window.location.href="/despedida";
-        }catch(error){
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: error,
-                confirmButtonColor: "#65B2C6"
-            });
-        }
-    }else{
-        console.log('Borrando usuario:', userId);
-        fetch(`https://backend-dev-tfdp.4.us-1.fl0.io/api/usuarioTurista/identificador/${userId}`)
-        .then(response => response.json())
-        .then(usuario => {
-            console.log(usuario);
-            return fetch(`https://backend-dev-tfdp.4.us-1.fl0.io/api/deleteUsuario/${usuario.id}`)
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert('Usuario borrado con éxito');
-            window.location.href = '/pages/cuentas.html';
-        })
-        .catch(error => {
-            alert('Error al borrar el usuario: ' + error.message);
-        });
-        modal.style.display = "none";
-        modal.classList.toggle('active');
-    }  
 }

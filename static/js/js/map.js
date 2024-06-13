@@ -52,6 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
   var logoImage = document.getElementById('logoImage');
 
   logoImage.addEventListener('click', function() {
-      window.location.href = '/pages/inicio.html'; 
+      window.location.href = '/home'; 
   });
 });
