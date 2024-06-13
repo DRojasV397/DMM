@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
         togglePassword.addEventListener('click', function () {
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
-
-            // Cambia la imagen del botón
             togglePassword.src = type === 'password' ? '../static/assets/icons/Boton ojoA.svg' : '../static/assets/icons/Boton ojoC.svg';
         });
     }
@@ -19,8 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
         togglePasswordRE.addEventListener('click', function () {
             const type = passwordREInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordREInput.setAttribute('type', type);
-
-            // Cambia la imagen del botón
             togglePasswordRE.src = type === 'password' ? '../static/assets/icons/Boton ojoA.svg' : '../static/assets/icons/Boton ojoC.svg';
         });
     }
