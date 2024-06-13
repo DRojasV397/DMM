@@ -63,8 +63,8 @@ export const cambiarIconoFavoritos = (peticion) => {
   const favoritoPrincipal = document.getElementById('favorito');
   const favoritoDesplegado = document.getElementById('favorito1');
 
-  const srcNoFavorito = "/public/assets/icons/favoritosIcon.png"
-  const srcFavorito = "/public/assets/icons/favoritosBlanco.png"
+  const srcNoFavorito = "../../assets/icons/favoritosIcon.png"
+  const srcFavorito = "../../assets/icons/favoritosBlanco.png"
 
   if(peticion == "Lugar favorito creado con éxito"){
     favoritoPrincipal.src = srcFavorito;

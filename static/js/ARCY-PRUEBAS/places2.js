@@ -231,7 +231,6 @@ function borrarLugares(mapa){
   mapa.setZoom(15);
   mostrarLugares(coordenadasActuales, mapa, null);
 }
-/******************************************************/
 
 const cosasPorArreglar = () => {
   geocoder = new google.maps.Geocoder();

@@ -19,7 +19,7 @@ export const actualizarHorario = (placeInfo) => {
 }
 
 export const cerrarHorario = () => {
-  document.getElementById("ToogleHorario").src = "/public/assets/icons/expandir.png";
+  document.getElementById("ToogleHorario").src = "/static/assets/icons/expandir.png";
   let isToogle = true;
   document.querySelector('.horario-text').style.display = 'flex';
   document.querySelector('.weekend-text').style.display = 'none';

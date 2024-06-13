@@ -18,7 +18,7 @@ export const crearMarcadorEnMapa = (coordenadas) => {
     position: coordenadas,
     title: 'Ubicación del turista',
     icon: {
-      url: "/public/assets/icons/locUserMarker.png",
+      url: "../../../static/assets/icons/locUserMarker.png",
       scaledSize: new google.maps.Size(32,32)
     }
   });

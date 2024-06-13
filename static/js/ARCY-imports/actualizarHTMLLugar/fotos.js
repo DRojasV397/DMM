@@ -133,8 +133,8 @@ export const actualizarFotos = (placeInfo) => {
       }
     }
     else{
-      document.getElementById("img-referente").innerHTML = "<img src='assets/icons/sin_foto.png' width='64px' height='64px' style='margin:0px 4px; border-radius: 10%;'>";
-      document.getElementById("img-referente1").innerHTML = "<img src='assets/icons/sin_foto.png' width='72px' height='72px' style='margin:0px 4px; border-radius: 10%;'>";
+      document.getElementById("img-referente").innerHTML = "<img src='static/assets/icons/sin_foto.png' width='64px' height='64px' style='margin:0px 4px; border-radius: 10%;'>";
+      document.getElementById("img-referente1").innerHTML = "<img src='static/assets/icons/sin_foto.png' width='72px' height='72px' style='margin:0px 4px; border-radius: 10%;'>";
       document.getElementById("photo-big").innerHTML = "<img src='#' width='128px' height='128px' style='padding:2px 2px 2px 2px; border-radius:5%;'>";
       document.getElementById("photo-big").style.display = "none";
       document.getElementById("photo2").style.display = "none";

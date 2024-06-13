@@ -100,7 +100,7 @@ function createUserMarker(coords){
     position: coords,
     title: 'Ubicación del turista',
     icon: {
-      url: "/public/assets/icons/locUserMarker.png",
+      url: "../../assets/icons/locUserMarker.png",
       scaledSize: new google.maps.Size(32,32)
     }
   });
@@ -438,16 +438,16 @@ function updateHTML(placeInfo) {
   });
 
   document.getElementById("card").style.display = "flex";
-  document.getElementById('favorito').src = '/public/assets/icons/favoritosIcon.png';
-  document.getElementById('favorito1').src = '/public/assets/icons/favoritosIcon.png';
-  document.getElementById('flecha').src = '/public/assets/icons/flechaBackAzul.png';
-  document.getElementById('itinerario').src = '/public/assets/icons/agregarItinIconV2.png';
-  document.getElementById('check').src = '/public/assets/icons/checked.png';
+  document.getElementById('favorito').src = '../../assets/icons/favoritosIcon.png';
+  document.getElementById('favorito1').src = '../../assets/icons/favoritosIcon.png';
+  document.getElementById('flecha').src = '../../assets/icons/flechaBackAzul.png';
+  document.getElementById('itinerario').src = '../../assets/icons/agregarItinIconV2.png';
+  document.getElementById('check').src = '../../assets/icons/checked.png';
   document.querySelector('.visitado').style.display = 'none';
   document.querySelector('.img-referente1').style.alignSelf = 'auto';
 
   //Cerrar los horarios
-  document.getElementById("ToogleHorario").src = "/public/assets/icons/expandir.png";
+  document.getElementById("ToogleHorario").src = "../../assets/icons/expandir.png";
   let isToogle = true;
   document.querySelector('.horario-text').style.display = 'flex';
   document.querySelector('.weekend-text').style.display = 'none';
@@ -1322,7 +1322,7 @@ async function updateFavoriteButtonStatus(placeId) {
 function updateFavoriteButtons() {
     const favoritoButton = document.getElementById('favorito');
     const favorito1Button = document.getElementById('favorito1');
-    const newSrc = isFavorito ? '/public/assets/icons/favoritosBlanco.png' : '/public/assets/icons/favoritosIcon.png';
+    const newSrc = isFavorito ? '../../assets/icons/favoritosBlanco.png' : '../../assets/icons/favoritosIcon.png';
     console.log("Actualizando botones a", newSrc);
 
     if (favoritoButton) favoritoButton.src = newSrc;
