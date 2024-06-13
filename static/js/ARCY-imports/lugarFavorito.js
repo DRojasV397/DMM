@@ -18,22 +18,20 @@ function getCookie() {
 
 export const comprobarSiLugarEsFavorito = async (placeId) => {
   try {
-      console.log("UserId Cookie: ", getCookie());
-      const res = await fetch('https://backend-dev-tfdp.4.us-1.fl0.io/api/lugarFavorito/obtenerLugarFavoritoIdlugar', {
+      const res = await fetch('/comprobarLugarFavorito', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
           },
           body: JSON.stringify({
               id_Lugar: placeId,
-              id_Turista: nombreUsuario.dataset.idTurista
+              user_id: getCookie()
           })
       });
 
       const esFavorito = await res.json();
 
-
-      if(!esFavorito.message){
+      if(esFavorito.message){
         cambiarEstadoFavorito();
       }
   } catch (error) {
@@ -45,7 +43,7 @@ export const cambiarEstadoFavorito = () => {
   const favoritoButton = document.getElementById('favorito');
   const favorito1Button = document.getElementById('favorito1');
 
-  const newSrc ='assets/icons/favoritosBlanco.png'
+  const newSrc ='static/assets/icons/favoritosBlanco.png'
 
   if (favoritoButton) favoritoButton.src = newSrc;
   if (favorito1Button) favorito1Button.src = newSrc;

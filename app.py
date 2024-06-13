@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import firebase_admin
 from firebase_admin import credentials, auth, firestore
 from utilities.validations import validar_email, validar_contrasena
@@ -286,14 +286,46 @@ def deleteAccount():
         return redirect(url_for('myAccount'))
 
 @app.route('/crearLugarFavorito', methods=['POST'])
-def crearLugarVisitado():
-
-    return
+def crearLugarFavorito():
+    if request.method == 'POST':
+        data = request.json
+        id_lugar = data.get('id_Lugar')
+        user_id = data.get('user_id')
+        query = favs_ref.where('user_id','==',user_id).where('id_Lugar', '==', id_lugar)
+        results = list(query.stream())
+        if results:
+            response = {
+                'message': True,
+                'status' : 'success'
+            }
+            return jsonify(response)
+        else:
+            response = {
+                'message': False,
+                'status' : 'success'
+            }
+            return jsonify(response)
 
 @app.route('/comprobarLugarFavorito', methods=['POST'])
 def comprobarLugarFavorito():
-    
-    return
+    if request.method == 'POST':
+        data = request.json
+        id_lugar = data.get('id_Lugar')
+        user_id = data.get('user_id')
+        query = favs_ref.where('user_id','==',user_id).where('id_Lugar', '==', id_lugar)
+        results = list(query.stream())
+        if results:
+            response = {
+                'message': True,
+                'status' : 'success'
+            }
+            return jsonify(response)
+        else:
+            response = {
+                'message': False,
+                'status' : 'success'
+            }
+            return jsonify(response)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
