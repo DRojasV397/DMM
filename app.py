@@ -15,6 +15,7 @@ cred = credentials.Certificate('serviceAccountKey.json')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 users_ref = db.collection('users')
+favs_ref = db.collection('lugarFavorito')
 
 @app.route('/')
 def index():
@@ -135,7 +136,11 @@ def suggestions():
                 category = request.form.get('category')
                 comentario = request.form.get('comentario')
                 if category and comentario:
-                    # Procesar el formulario, por ejemplo, enviar correo, guardar en base de datos, etc.
+                    queja_ref = db.collection('quejas').add({
+                        'user_id': user_id,
+                        'categoria': category,
+                        'comentario': comentario
+                    })
                     flash('¡Comentario enviado exitosamente!', 'success')
                 else:
                     flash('Por favor selecciona un tipo de error y escribe un comentario.', 'warning')
@@ -280,6 +285,15 @@ def deleteAccount():
         flash(f'Error al eliminar la cuenta: {str(e)}', 'error')
         return redirect(url_for('myAccount'))
 
+@app.route('/crearLugarFavorito', methods=['POST'])
+def crearLugarVisitado():
+
+    return
+
+@app.route('/comprobarLugarFavorito', methods=['POST'])
+def comprobarLugarFavorito():
+    
+    return
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))

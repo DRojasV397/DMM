@@ -1,8 +1,24 @@
 import { mostrarLugares } from "../ARCY-PRUEBAS/places2.js";
 import { getInfo, obtenerCoordenadasPorPlaceId, obtenerUnLugarConId, updateHTML } from "./utilidadesMapa.js";
 
+function getCookie() {
+  const cookieName = 'user_id' + "=";
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookieArray = decodedCookie.split(';');
+  
+  for (let i = 0; i < cookieArray.length; i++) {
+      let cookie = cookieArray[i].trim();
+      if (cookie.indexOf(cookieName) === 0) {
+          return cookie.substring(cookieName.length, cookie.length);
+      }
+  }
+  
+  return "";
+}
+
 export const comprobarSiLugarEsFavorito = async (placeId) => {
   try {
+      console.log("UserId Cookie: ", getCookie());
       const res = await fetch('https://backend-dev-tfdp.4.us-1.fl0.io/api/lugarFavorito/obtenerLugarFavoritoIdlugar', {
           method: 'POST',
           headers: {
