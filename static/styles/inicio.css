@@ -115,6 +115,7 @@ main{
     line-height: normal;
     white-space: nowrap;
     bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .btn-sidebar{

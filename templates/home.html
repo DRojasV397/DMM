@@ -30,7 +30,7 @@
         <div class="container-modal-sidebar" id="modalSidebar">
             <div id="sidebar" class="sidebar">
                 <div class="user">
-                    <p>Hola, </p><b id="nombreUsuario"> NOMBRE </b> 
+                    <p>Hola, </p><b id="nombreUsuario"> {{ user_name }} </b> 
                 </div>
                 <div class="sidebar-text">
                     <a href="/pages/Aventuras_proximas.html" class="btn-sidebar"> 
@@ -49,7 +49,7 @@
                     <a href="/pages/FormularioQuejas.html" class="btn-sidebar"> 
                         <img src="../static/assets/icons/Bandera.png" class="sidebar-img" style="border-radius: 0;"> Enviar comentarios <br>de la aplicación
                     </a>
-                    <a href="#" class="btn-sidebar" id="cerrarSesion"> 
+                    <a href="/logout" class="btn-sidebar" id="cerrarSesion"> 
                         <img src="../static/assets/icons/cerrarIcono.png" class="sidebar-img"> Cerrar Sesión 
                     </a>
                 </div>

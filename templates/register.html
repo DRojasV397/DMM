@@ -14,6 +14,20 @@
     <div class="container">
         <img src="../static/assets/icons/Logo.PNG" alt="Logo" class="logo">
         <h1>Ingresa tus datos</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <script>
+                        Swal.fire({
+                            icon: "error",
+                            text: '{{ message }}',
+                            showConfirmButton: false,
+                            timer: 3000 
+                        });
+                    </script>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <form action="{{ url_for('register') }}" method="post" id="loginFormRegister">
             <input type="text" id="name" name="name" placeholder="Nombre(s)" required>
             <input type="text" id="lastname" name="lastname" placeholder="Apellidos" required>
@@ -21,11 +35,11 @@
 
             <div class="password-container">
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
-                <!-- Tu botón para mostrar contraseña -->
+                <img src="../static/assets/icons/Boton ojoA.svg" alt="Mostrar contraseña" id="togglePassword">
             </div>
             <div class="password-container">
                 <input type="password" id="passwordRE" name="passwordRE" placeholder="Confirmar contraseña" required>
-                <!-- Tu botón para mostrar contraseña -->
+                <img src="../static/assets/icons/Boton ojoA.svg" alt="Mostrar contraseña" id="togglePassword">
             </div>
 
             <div class="container-date-gene">
