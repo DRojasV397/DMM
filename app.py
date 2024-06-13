@@ -4,6 +4,7 @@ from firebase_admin import credentials, auth, firestore
 from utilities.validations import validar_email, validar_contrasena
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask import make_response
+import os
 
 
 app = Flask(__name__)
