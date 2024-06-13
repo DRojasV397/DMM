@@ -3,20 +3,6 @@
     src: url("../assets/fonts/Montserrat-Regular.ttf");
     
 }
-#btnGuardar{
-    background-color: #65B2C6;
-    border: none;
-    padding: 6px 18px;
-    color: white;
-    cursor: pointer;
-    border-radius: 7px;
-    font-size: small;
-    font-weight: bold;
-    position: absolute;
-    transform: translateX(0%);
-    transform: translateY(50%);
- }
-
 body {
     font-family: "Montserrat", Arial, Helvetica, sans-serif;
     margin: 0;
@@ -38,17 +24,42 @@ body {
     flex-direction: column;
 }
 
-.logo {
-    width: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
-form{
+.logo-container a {
+    position: absolute;
+    left: 0;
+}
+
+.logo {
+    width: 90px;
+}
+
+form {
     margin-top: 4%;
 }
+
+#btnGuardar {
+    background-color: #65B2C6;
+    border: none;
+    padding: 6px 18px;
+    color: white;
+    cursor: pointer;
+    border-radius: 7px;
+    font-size: small;
+    font-weight: bold;
+    position: absolute;
+    transform: translateX(0%);
+    transform: translateY(50%);
+}
+
+/* Resto de tus estilos */
+
 
 #name, #lastname, #email, #birthdate, #password, #passwordRE, select{
     width: 100%;
@@ -269,12 +280,10 @@ select:focus, select:hover {
     align-self: center;
 }
 
-.gender-code-container{
+.gender-code-container {
     display: flex;
     flex-direction: column;
-    width: auto;
-    align-items: stretch;
-    text-align: center;
+    align-items: center; /* Centra los elementos dentro de este contenedor */
 }
 
 /*Empresa*/

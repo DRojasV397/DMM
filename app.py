@@ -124,6 +124,28 @@ def logout():
     response.set_cookie('user_id', '', expires=0)
     return response
 
+@app.route('/suggestions', methods=['GET', 'POST'])
+def suggestions():
+    user_id = request.cookies.get('user_id')
+    if user_id:
+        user_ref = users_ref.document(user_id)
+        user_data = user_ref.get().to_dict()
+        if user_data:
+            if request.method == 'POST':
+                category = request.form.get('category')
+                comentario = request.form.get('comentario')
+                if category and comentario:
+                    # Procesar el formulario, por ejemplo, enviar correo, guardar en base de datos, etc.
+                    flash('¡Comentario enviado exitosamente!', 'success')
+                else:
+                    flash('Por favor selecciona un tipo de error y escribe un comentario.', 'warning')
+            
+            return render_template('suggestions.html')
+        else:
+            return redirect(url_for('login'))
+    else:
+        return redirect(url_for('login'))
+
 @app.route('/myAccount', methods=['GET', 'POST'])
 def myAccount():
     user_id = request.cookies.get('user_id')
@@ -139,6 +161,11 @@ def myAccount():
             return redirect(url_for('login'))
     else:
         return redirect(url_for('login'))
+
+
+############################################################
+######         Rutas para update y delete             ###### 
+############################################################
 
 @app.route('/updateEmail', methods=['POST'])
 def updateEmail():
@@ -214,7 +241,6 @@ def updateName():
 
     return redirect(url_for('myAccount'))
 
-
 @app.route('/updateLastName', methods=['POST'])
 def updateLastName():
     user_id = request.cookies.get('user_id')
@@ -231,7 +257,6 @@ def updateLastName():
         flash(f'Error actualizando apellido: {str(e)}', 'error')
 
     return redirect(url_for('myAccount'))
-
 
 @app.route('/deleteAccount', methods=['POST'])
 def deleteAccount():
@@ -257,5 +282,5 @@ def deleteAccount():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
     # app.run(debug=True)
