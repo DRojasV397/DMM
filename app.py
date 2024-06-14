@@ -167,6 +167,22 @@ def myAccount():
             return redirect(url_for('login'))
     else:
         return redirect(url_for('login'))
+    
+@app.route('/favorites', methods=['GET', 'POST'])
+def favorites():
+    user_id = request.cookies.get('user_id')
+    if user_id:
+        user_ref = users_ref.document(user_id)
+        user_data = user_ref.get().to_dict()
+        if user_data:
+            user_name = user_data.get('name', 'Usuario')
+            user_lastname = user_data.get('lastname', '')
+            user_email = user_data.get('email', '')
+            return render_template('favorites.html', user_name=user_name)
+        else:
+            return redirect(url_for('login'))
+    else:
+        return redirect(url_for('login'))
 
 
 ############################################################
@@ -335,6 +351,54 @@ def comprobarLugarFavorito():
             }
             return jsonify(response)
 
+@app.route('/obtenerLugaresFavoritos', methods=['POST'])
+def obtenerLugaresFavoritos():
+    if request.method == 'POST':
+        data = request.json
+        user_id = data.get('user_id')
+        query = favs_ref.where('user_id','==',user_id)
+        results = list(query.stream())
+        if results:
+            response_data = [doc.to_dict() for doc in results]
+            
+            response = {
+                'message': response_data,
+                'status' : 'success'
+            }
+            print("Data: ", response)
+            return jsonify(response)
+        else:
+            response = {
+                'message': '',
+                'status' : 'error'
+            }
+            return jsonify(response)
+
+
+@app.route('/eliminarLugarFavorito', methods=['POST'])
+def eliminarLugarFavorito():
+    if request.method == 'POST':
+        data = request.json
+        id_lugar = data.get('id_Lugar')
+        user_id = data.get('user_id')
+        query = favs_ref.where('user_id','==',user_id).where('id_Lugar', '==', id_lugar)
+        results = list(query.stream())
+        if results:
+            for doc in results:
+                doc.reference.delete()
+            response = {
+                'message': 'Lugar favorito eliminado con éxito',
+                'status': 'success'
+            }
+        else:
+            response = {
+                'message': 'No se encontro el lugar favorito',
+                'status': 'error'
+            }
+        return jsonify(response)
+
+
+
 @app.route('/crearLugarVisitado', methods=['POST'])
 def crearLugarVisitado():
     if request.method == 'POST':
@@ -382,9 +446,6 @@ def comprobarLugarVisitado():
                 'status' : 'success'
             }
         return jsonify(response)
-
-
-
 
 
 if __name__ == '__main__':

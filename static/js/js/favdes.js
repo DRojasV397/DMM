@@ -1,21 +1,35 @@
 
 console.log("iniciandodespli");
 
-
-// Define la URL de la API para obtener lugares favoritos
-const API_URL = 'https://backend-dev-tfdp.4.us-1.fl0.io/api/lugarFavorito/obtenerLugaresFavoritos';
-
+function getCookie() {
+  const cookieName = 'user_id' + "=";
+  const decodedCookie = decodeURIComponent(document.cookie);
+  const cookieArray = decodedCookie.split(';');
+  
+  for (let i = 0; i < cookieArray.length; i++) {
+      let cookie = cookieArray[i].trim();
+      if (cookie.indexOf(cookieName) === 0) {
+          return cookie.substring(cookieName.length, cookie.length);
+      }
+  }
+  
+  return "";
+}
 // Función para obtener los lugares favoritos del usuario
 async function fetchFavoritePlaces(idTurista) {
-    console.log("fetchFavoritePlaces llamada con idTurista:", idTurista);
     try {
-        const response = await fetch(API_URL, {
+        const response = await fetch('/obtenerLugaresFavoritos', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ idTurista })
+            body: JSON.stringify({ 
+              user_id: idTurista 
+            })
         });
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        return await response.json();
+
+        const result = await response.json();
+
+        if (result.status == 'error') throw new Error(`HTTP error! status: ${response.status}`);
+        return result.message;
     } catch (error) {
         console.error('Error fetching favorite places:', error);
     }
@@ -115,7 +129,7 @@ function getInfo(place) {
     <div class="favorite-card">
     <div class="body-details">
     <div class="img-referente" id="img-referente" style="align-items: center;">
-    <img src="${placeInfo.photoUrls ? placeInfo.photoUrls[0] : '/public/assets/icons/Lugarejemplo.PNG'}" 
+    <img src="${placeInfo.photoUrls ? placeInfo.photoUrls[0] : ''}" 
      width="64px" 
      height="64px"
      style="margin: 0px 4px; 
@@ -124,7 +138,7 @@ function getInfo(place) {
     > 
             <div class="place-info">
             <div class="info-add">
-                <img src="/public/assets/icons/promocionNegroIcon.png" width="15px" height="15px" style="margin:0px 4px;">
+                <img src="/static/assets/icons/promocionNegroIcon.png" width="15px" height="15px" style="margin:0px 4px;">
                 <div class="info-name" id="info-name" data-placeid="${placeInfo.placeID}">${placeInfo.name || 'Nombre no especificado'}</div>
             </div>
         </div>
@@ -136,30 +150,30 @@ function getInfo(place) {
                 <div class="score-number" id="score-number">${rating}/5</div>
             </div>
             <div class="details-domicilio">
-                <img src="/public/assets/icons/ubicacionIcon.png" width="15px" height="15px" style="margin:0px 4px;">
+                <img src="/static/assets/icons/ubicacionIcon.png" width="15px" height="15px" style="margin:0px 4px;">
                 <div class="domicilio-text" id="details-domicilio">${placeInfo.address}</div>
             </div>
             <div class="details-horario">
-                <img src="/public/assets/icons/reloj2.png" width="15px" height="15px" style="margin:0px 4px;">
+                <img src="/static/assets/icons/reloj2.png" width="15px" height="15px" style="margin:0px 4px;">
                 ${horarioHtml}
             </div>
             <div class="details-phone">
-                <img src="/public/assets/icons/telefonoIcon.png" width="15px" height="15px" style="margin:0px 4px;">
+                <img src="/static/assets/icons/telefonoIcon.png" width="15px" height="15px" style="margin:0px 4px;">
                 <div class="phone-text" id="phone-text">${placeInfo.phone || 'No posee'}</div>
             </div>
             <div class="details-site">
-                <img src="/public/assets/icons/sitioIcono.png" width="15px" height="15px" style="margin:0px 4px;">
+                <img src="/static/assets/icons/sitioIcono.png" width="15px" height="15px" style="margin:0px 4px;">
                 <div class="site-text" id="site-text">${placeInfo.website || 'Sin sitio web'}</div>
             </div>
         </div>
         <div class="body-button-right"  style="margin-left: 15px;">
           <div class="ckeck-icon" style="align-items: flex;">
-            <img src="/public/assets/icons/origenIcon.png" id= "agreIti" width="40px" height="40px" style="margin:0px 4px;">
+            <img src="/static/assets/icons/origenIcon.png" id= "agreIti" width="40px" height="40px" style="margin:0px 4px;">
           </div>
         </div>
         <div class="body-button-right" style="margin-left: 15px;">
             <div class="favorite-icon" style="align-items: center;">
-                <img src="/public/assets/icons/eliminarIcon.png" id="tuBotonEliminar" width="35px" height="35px" style="margin:0px 4px;">
+                <img src="/static/assets/icons/eliminarIcon.png" id="tuBotonEliminar" width="35px" height="35px" style="margin:0px 4px;">
             </div>
         </div>
     </div>
@@ -184,13 +198,14 @@ async function displayFavorites() {
           const nombreUsuario = document.getElementById("nombreUsuario");
           const idTurista = nombreUsuario.getAttribute('data-id-turista');
           
-          const favoritePlaces = await fetchFavoritePlaces(idTurista);
+          const favoritePlaces = await fetchFavoritePlaces(getCookie());
           const favoritesContainer = document.getElementById('favodes');
   
   if (favoritePlaces && favoritePlaces.length > 0) {
     favoritesContainer.innerHTML = ''; // Limpiar el contenedor antes de añadir nuevas tarjetas
     for (const place of favoritePlaces) {
-        const placeInfo = await getInfo(place["ID LUGAR"]);
+        console.log("Favs: ", place);
+        const placeInfo = await getInfo(place.id_Lugar);
         const favoriteCardHtml = createFavoriteCard(placeInfo);
         favoritesContainer.innerHTML += favoriteCardHtml;
       }
@@ -198,7 +213,7 @@ async function displayFavorites() {
     favoritesContainer.innerHTML = `
       <div class="no-favorites-message">
         <p>No hay lugares favoritos agregados aún.</p>
-        <button onclick="location.href='/pages/inicio.html'">Ir a agregar</button>
+        <button onclick="location.href='/home'">Ir a agregar</button>
       </div>
     `;
   }
@@ -216,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   container.addEventListener('click', function(event) {
       if (event.target.id === 'tuBotonEliminar') {
-          const idTurista = document.getElementById("nombreUsuario").getAttribute('data-id-turista');
+          const idTurista = getCookie();
           const idLugar = event.target.closest('.favorite-card').querySelector('.info-name').getAttribute('data-placeid');
 
           
@@ -239,7 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (event.target.id === 'agreIti') {
           const idLugar = event.target.closest('.favorite-card').querySelector('.info-name').getAttribute('data-placeid');
-          window.location.href = `/pages/inicio.html?placeId=${idLugar}`;
+          window.location.href = `/home?placeId=${idLugar}`;
       }
   });
 });
@@ -248,12 +263,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function removeFavorite(idLugar, idTurista) {
-  fetch('https://backend-dev-tfdp.4.us-1.fl0.io/api/lugarFavorito/eliminarLugarFavorito', {
+  fetch('/eliminarLugarFavorito', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
           id_Lugar: idLugar,
-          id_Turista: idTurista
+          user_id: idTurista
       })
   })
   .then(response => response.json())
@@ -276,6 +291,5 @@ function removeFavorite(idLugar, idTurista) {
 
 // Inicializar la pantalla de favoritos cuando el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("DOMContentLoaded, inicializando pantalla de favoritos");
     displayFavorites();
   });

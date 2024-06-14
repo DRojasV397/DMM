@@ -61,7 +61,7 @@ body, html {
 }
 
 .no-favorites-message button {
-    background-color: #D63D6C; /* Color rosa para el botón */
+    background-color: #D2116D; /* Color rosa para el botón */
     color: white; /* Letras blancas */
     border: none; /* Sin bordes */
     border-radius: 5px; /* Bordes redondeados para el botón */
