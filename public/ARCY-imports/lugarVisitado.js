@@ -1,22 +1,37 @@
 import { mostrarLugares } from "../ARCY-PRUEBAS/places2.js";
 import { getInfo, obtenerCoordenadasPorPlaceId, obtenerUnLugarConId, updateHTML } from "./utilidadesMapa.js";
 
+function getCookie() {
+    const cookieName = 'user_id' + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const cookieArray = decodedCookie.split(';');
+    
+    for (let i = 0; i < cookieArray.length; i++) {
+        let cookie = cookieArray[i].trim();
+        if (cookie.indexOf(cookieName) === 0) {
+            return cookie.substring(cookieName.length, cookie.length);
+        }
+    }
+    
+    return "";
+  }
+
 export const comprobarSiLugarEstaVisitado = async (placeId) => {
     try {
-        const res = await fetch('https://backend-dev-tfdp.4.us-1.fl0.io/api/lugarVisitado/obtenerLugarVisitadoIdlugar', {
+        const res = await fetch('/comprobarLugarVisitado', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 id_Lugar: placeId,
-                id_Turista: nombreUsuario.dataset.idTurista
+                id_Turista: getCookie()
             })
         });
 
         const esVisitado = await res.json();
 
-        if(!esVisitado.message){
+        if(esVisitado.message){
             cambiarEstado();
         }
     } catch (error) {
@@ -30,7 +45,7 @@ export const cambiarEstado = () => {
     const visitado = document.querySelector('.visitado');
     const ajusteFoto = document.querySelector('.img-referente1');
 
-    const newSrc ='/public/assets/icons/checkedAzul.png'
+    const newSrc ='/static/assets/icons/checkedAzul.png'
 
     if (visitadoButton) {
         visitadoButton.src = newSrc;
@@ -45,7 +60,7 @@ export const handleVisitedClick = async (e) => {
     const infoName = document.getElementById("info-name");
     const nombreUsuario = document.getElementById("nombreUsuario");
 
-    const res = await fetch('https://backend-dev-tfdp.4.us-1.fl0.io/api/lugarVisitado/crearLugarVisitado', {
+    const res = await fetch('/crearLugarVisitado', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'
@@ -53,7 +68,7 @@ export const handleVisitedClick = async (e) => {
         body: JSON.stringify({
             id_Lugar: infoName.dataset.idUbicacion,
             Nombre: infoName.textContent,
-            id_Turista: nombreUsuario.dataset.idTurista
+            user_id: getCookie()
         })
     });
     
@@ -68,8 +83,8 @@ export const cambiarIcono = (peticion) => {
     const visitadoImg = document.querySelector('.visitado');
     const ajusteFoto = document.querySelector('.img-referente1');
 
-    const srcNoVisitado = "/public/assets/icons/checked.png"
-    const srcVisitado = "/public/assets/icons/checkedAzul.png"
+    const srcNoVisitado = "/static/assets/icons/checked.png"
+    const srcVisitado = "/static/assets/icons/checkedAzul.png"
 
     if(peticion == "Lugar visitado marcado con éxito"){
         visitado.src = srcVisitado;

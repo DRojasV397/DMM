@@ -127,7 +127,7 @@ main{
   margin-bottom: 4%;
   padding: 2px 0px 4px 0px;
   outline: none !important;
-  background-color: var(--cpink);
+  background-color: #823E93;
   outline: none;
   border: none;
   transition: 0.5s;
@@ -136,7 +136,7 @@ main{
 .btn-sidebar:active{
   outline-color: transparent !important; /* Elimina el contorno predeterminado en algunos navegadores */
   text-decoration: none !important;
-  background-color: #bf365f;
+  background-color: #823E93;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.01);
   border-radius: 10px;
   /*background-color: rgba(0, 0, 0, 0.1);*/
@@ -190,7 +190,7 @@ main{
   top: 0;
   left: 0;
   border-radius: 0px 15px 15px 0px;
-  background-color:  #D63D6C;
+  background-color:  #823E93;
   transition: 0.5s;
   padding: 60px 24px 24px 24px;
 }
@@ -220,7 +220,7 @@ main{
   top: 1%;
   left: 84%;
   border-radius: 10px 10px 10px 10px;
-  background-color:  #D63D6C;
+  background-color:  #823E93;
   transition: 0.5s;
   padding: 7px 0px 7px 0px;
 }
@@ -328,7 +328,7 @@ main{
 }
 
 #filterSend{
-  background-color:#D63D6C;
+  background-color:#823E93;
 }
 
 #filterErase{
@@ -900,9 +900,9 @@ main{
 
 /* Estilo cuando el checkbox está marcado */
 .checkbox-button:checked + label {
-  background-color: #D63D6C; /* Color de fondo cuando está marcado */
+  background-color: #823E93; /* Color de fondo cuando está marcado */
   color: white; /* Color del texto cuando está marcado */
-  border-color: #D63D6C; /* Color del borde cuando está marcado */
+  border-color: #823E93; /* Color del borde cuando está marcado */
 }
 
 

@@ -16,6 +16,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 users_ref = db.collection('users')
 favs_ref = db.collection('lugarFavorito')
+visits_ref = db.collection('lugarVisitado')
 
 @app.route('/')
 def index():
@@ -294,17 +295,24 @@ def crearLugarFavorito():
         query = favs_ref.where('user_id','==',user_id).where('id_Lugar', '==', id_lugar)
         results = list(query.stream())
         if results:
+            for doc in results:
+                doc.reference.delete()
             response = {
-                'message': True,
-                'status' : 'success'
+                'message': 'Lugar favorito eliminado con éxito',
+                'status': 'success'
             }
-            return jsonify(response)
         else:
-            response = {
-                'message': False,
-                'status' : 'success'
+            new_entry = {
+                'user_id': user_id,
+                'id_Lugar': id_lugar,
+                'Nombre': data.get('Nombre') 
             }
-            return jsonify(response)
+            favs_ref.add(new_entry)
+            response = {
+            'message': 'Lugar favorito creado con éxito',
+                'status': 'success'
+            }
+        return jsonify(response)
 
 @app.route('/comprobarLugarFavorito', methods=['POST'])
 def comprobarLugarFavorito():
@@ -326,6 +334,58 @@ def comprobarLugarFavorito():
                 'status' : 'success'
             }
             return jsonify(response)
+
+@app.route('/crearLugarVisitado', methods=['POST'])
+def crearLugarVisitado():
+    if request.method == 'POST':
+        data = request.json
+        id_lugar = data.get('id_Lugar')
+        user_id = data.get('user_id')
+        query = visits_ref.where('user_id','==',user_id).where('id_Lugar', '==', id_lugar)
+        results = list(query.stream())
+        if results:
+            for doc in results:
+                doc.reference.delete()
+            response = {
+                'message': 'Lugar visitado eliminado con éxito',
+                'status': 'success'
+            }
+        else:
+            new_entry = {
+                'user_id': user_id,
+                'id_Lugar': id_lugar,
+                'Nombre': data.get('Nombre') 
+            }
+            visits_ref.add(new_entry)
+            response = {
+            'message': 'Lugar visitado marcado con éxito',
+                'status': 'success'
+            }
+        return jsonify(response)
+
+@app.route('/comprobarLugarVisitado', methods=['POST'])
+def comprobarLugarVisitado():
+    if request.method == 'POST':
+        data = request.json
+        id_lugar = data.get('id_Lugar')
+        user_id = data.get('user_id')
+        query = visits_ref.where('user_id','==',user_id).where('id_Lugar', '==', id_lugar)
+        results = list(query.stream())
+        if results:
+            response = {
+                'message': True,
+                'status' : 'success'
+            }
+        else:
+            response = {
+                'message': False,
+                'status' : 'success'
+            }
+        return jsonify(response)
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))

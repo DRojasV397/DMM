@@ -216,7 +216,7 @@ body {
 }
 
 .finish {
-    background-color: #D63D6C; /* Color rojo para el botón Finalizar */
+    background-color: #823E93; /* Color rojo para el botón Finalizar */
     text-decoration: none;
 }
 
@@ -249,12 +249,12 @@ body {
 .modal-content {
     background-color: #f8f9fa; /* Cambia el color de fondo */
     border-radius: 15px; /* Esquinas redondeadas */
-    border: 2px solid #D63D6C; /* Borde del modal */
+    border: 2px solid #823E93; /* Borde del modal */
 }
 
 /* Estilos para el encabezado del modal */
 .modal-header {
-    background-color: #D63D6C; /* Cambia el color de fondo del encabezado */
+    background-color: #823E93; /* Cambia el color de fondo del encabezado */
     color: white; /* Cambia el color del texto */
 }
 
@@ -302,7 +302,7 @@ body {
 }
 
 .no-favorites-message button {
-    background-color: #D63D6C; /* Color rosa para el botón */
+    background-color: #823E93; /* Color rosa para el botón */
     color: white; /* Letras blancas */
     border: none; /* Sin bordes */
     border-radius: 5px; /* Bordes redondeados para el botón */

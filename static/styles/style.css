@@ -1,9 +1,9 @@
 :root{
-    --cpink: #D63D6C;
-    --coral: #D57275;
+    --cpink: #823E93;
+    --coral: #D2116D;
     --pale: #D5C2BC;
     --cgray: #C0CBCD;
-    --cblue: #65B2C6;
+    --cblue: #c665bc;
     --cwhite: #EFEDED;
 }
 
@@ -73,7 +73,6 @@ body{
 }
 
 .img-nav{
-    width: 32px;
     height: 32px;
     margin: 0 !important;
 }
@@ -81,7 +80,7 @@ body{
 .navbar {
     height: 52px;
     flex-shrink: 0;
-    background-color: #D63D6C;
+    background-color: #823E93;
     padding: 0 6%;
     display: flex; 
     justify-content: space-between; 

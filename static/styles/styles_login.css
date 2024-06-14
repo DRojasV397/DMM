@@ -29,7 +29,7 @@ body {
 }
 
 .logo {
-    width: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
+    height: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
     position: relative;
     top: 10px;
     left: 50%;

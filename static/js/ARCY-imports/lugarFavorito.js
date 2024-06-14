@@ -56,7 +56,7 @@ export const handleFavoriteClick = async (e) => {
   const nombreUsuario = document.getElementById("nombreUsuario");
 
 
-  const res = await fetch('https://backend-dev-tfdp.4.us-1.fl0.io/api/lugarFavorito/crearLugarFavorito', {
+  const res = await fetch('/crearLugarFavorito', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -64,7 +64,7 @@ export const handleFavoriteClick = async (e) => {
     body: JSON.stringify({
       id_Lugar: infoName.dataset.idUbicacion,
       Nombre: infoName.textContent,
-      id_Turista: nombreUsuario.dataset.idTurista
+      user_id: getCookie()
     })
   });
   
@@ -77,10 +77,10 @@ export const cambiarIconoFavoritos = (peticion) => {
   const favoritoPrincipal = document.getElementById('favorito');
   const favoritoDesplegado = document.getElementById('favorito1');
 
-  const srcNoFavorito = "../../assets/icons/favoritosIcon.png"
-  const srcFavorito = "../../assets/icons/favoritosBlanco.png"
+  const srcNoFavorito = "static/assets/icons/favoritosIcon.png"
+  const srcFavorito = "static/assets/icons/favoritosBlanco.png"
 
-  if(peticion == "Lugar favorito creado con éxito"){
+  if(peticion.message == "Lugar favorito creado con éxito"){
     favoritoPrincipal.src = srcFavorito;
     favoritoDesplegado.src = srcFavorito;
   }else{
