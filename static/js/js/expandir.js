@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
           comentario.setAttribute('style', style1);
           card.setAttribute('style', style);
 
-          ToogleExpandir.src = style === 'height: 130px !important; bottom: 6% !important; display: flex; padding-bottom: 0px !important;' ? 'static/assets/icons/Flecha_pa_arriba.png' : 'static/assets/icons/Flecha_pa_abajo.png';
+          ToogleExpandir.src = style === 'height: 130px !important; bottom: 6% !important; display: flex; padding-bottom: 0px !important;' ? '../static/assets/icons/Flecha_pa_arriba.png' : '../static/assets/icons/Flecha_pa_abajo.png';
 
 
       });
