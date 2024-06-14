@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
             semanal.setAttribute('style', style);
 
             isToogle = !isToogle;
-            toggleHorario.src = isToogle ? '/public/assets/icons/expandir.png' : '/public/assets/icons/contraer.png';
+            toggleHorario.src = isToogle ? '/static/assets/icons/expandir.png' : '/static/assets/icons/contraer.png';
         });
     }
 });

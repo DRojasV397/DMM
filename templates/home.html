@@ -33,8 +33,8 @@
                     <p>Hola, </p><b id="nombreUsuario"> {{ user_name }} </b> 
                 </div>
                 <div class="sidebar-text">
-                    <a href="/pages/Aventuras_proximas.html" class="btn-sidebar"> 
-                        <img src="../static/assets/icons/itinerarioIcono.png" class="sidebar-img"> Aventuras 
+                    <a href="/history" class="btn-sidebar"> 
+                        <img src="../static/assets/icons/itinerarioIcono.png" class="sidebar-img"> Lugares Visitados 
                     </a>
                     <a href="/favorites" class="btn-sidebar"> 
                         <img src="../static/assets/icons/favoritosBlancoRosa.png" class="sidebar-img"> Lugares favoritos 
@@ -70,395 +70,265 @@
                     <b>Recomendados</b>
                     <div id="recommendedFilters">
                         <div>
-                            <input type="checkbox" id="filter2" class="checkbox-button" value="airport">
-                            <label for="filter2">Aeropuerto</label>
+                            <input type="checkbox" id="filter2" class="checkbox-button" value="pozoleria">
+                            <label for="filter2">Pozoleria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter3" class="checkbox-button" value="amusement_park">
-                            <label for="filter3">Parque de Atracciones</label>
+                            <input type="checkbox" id="filter3" class="checkbox-button" value="taqueria">
+                            <label for="filter3">Taqueria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter4" class="checkbox-button" value="aquarium">
-                            <label for="filter4">Acuario</label>
+                            <input type="checkbox" id="filter4" class="checkbox-button" value="garnachas">
+                            <label for="filter4">Garnachas</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter5" class="checkbox-button" value="art_gallery">
-                            <label for="filter5">Galería de Arte</label>
+                            <input type="checkbox" id="filter5" class="checkbox-button" value="antojitos">
+                            <label for="filter5">Antojitos</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter9" class="checkbox-button" value="bar">
-                            <label for="filter9">Bar</label>
+                            <input type="checkbox" id="filter9" class="checkbox-button" value="churreria">
+                            <label for="filter9">Churreria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter21" class="checkbox-button" value="casino">
-                            <label for="filter21">Casino</label>
+                            <input type="checkbox" id="filter21" class="checkbox-button" value="birrieria">
+                            <label for="filter21">Birrieria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter62" class="checkbox-button" value="museum">
-                            <label for="filter62">Museo</label>
+                            <input type="checkbox" id="filter62" class="checkbox-button" value="marisqueria">
+                            <label for="filter62">Marisqueria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter65" class="checkbox-button" value="park">
-                            <label for="filter65">Parque</label>
+                            <input type="checkbox" id="filter65" class="checkbox-button" value="carnitas">
+                            <label for="filter65">Carnitas</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter75" class="checkbox-button" value="restaurant">
-                            <label for="filter75">Restaurante</label>
+                            <input type="checkbox" id="filter75" class="checkbox-button" value="cemitas">
+                            <label for="filter75">Cemitas</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter90" class="checkbox-button" value="tourist_attraction">
-                            <label for="filter90">Atracción Turística</label>
+                            <input type="checkbox" id="filter90" class="checkbox-button" value="tlayuderia">
+                            <label for="filter90">Tlayuderia</label>
                         </div>
                 </div>
                 <div>
                     <b>Más Filtros</b>
                     <div id="moreFilters">
                         <div>
-                            <input type="checkbox" id="filter1" class="checkbox-button" value="accounting">
-                            <label for="filter1">Contabilidad</label>
+                            <input type="checkbox" id="filter1" class="checkbox-button" value="mole">
+                            <label for="filter1">Mole</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter6" class="checkbox-button" value="atm">
-                            <label for="filter6">Cajero Automático</label>
+                            <input type="checkbox" id="filter6" class="checkbox-button" value="menuderia">
+                            <label for="filter6">Menuderia</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter7" class="checkbox-button" value="bakery">
-                            <label for="filter7">Panadería</label>
+                            <input type="checkbox" id="filter7" class="checkbox-button" value="pambaceria">
+                            <label for="filter7">Pambaceria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter8" class="checkbox-button" value="bank">
-                            <label for="filter8">Banco</label>
+                            <input type="checkbox" id="filter8" class="checkbox-button" value="enfrijoladas">
+                            <label for="filter8">Enfrijoladas</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter10" class="checkbox-button" value="beauty_salon">
-                            <label for="filter10">Salón de Belleza</label>
+                            <input type="checkbox" id="filter10" class="checkbox-button" value="cocteleria">
+                            <label for="filter10">Cocteleria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter11" class="checkbox-button" value="bicycle_store">
-                            <label for="filter11">Tienda de Bicicletas</label>
+                            <input type="checkbox" id="filter11" class="checkbox-button" value="pulqueria">
+                            <label for="filter11">Pulqueria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter12" class="checkbox-button" value="book_store">
-                            <label for="filter12">Librería</label>
+                            <input type="checkbox" id="filter12" class="checkbox-button" value="tacoria">
+                            <label for="filter12">Tacoria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter13" class="checkbox-button" value="bowling_alley">
-                            <label for="filter13">Bolera</label>
+                            <input type="checkbox" id="filter13" class="checkbox-button" value="mezcaleria">
+                            <label for="filter13">Mezcaleria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter14" class="checkbox-button" value="bus_station">
-                            <label for="filter14">Estación de Autobuses</label>
+                            <input type="checkbox" id="filter14" class="checkbox-button" value="gorditas">
+                            <label for="filter14">Gorditas</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter15" class="checkbox-button" value="cafe">
-                            <label for="filter15">Café</label>
+                            <input type="checkbox" id="filter15" class="checkbox-button" value="caldos">
+                            <label for="filter15">Caldos</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter16" class="checkbox-button" value="campground">
-                            <label for="filter16">Camping</label>
+                            <input type="checkbox" id="filter16" class="checkbox-button" value="enchiladeria">
+                            <label for="filter16">Enchiladeria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter17" class="checkbox-button" value="car_dealer">
-                            <label for="filter17">Concesionario de Coches</label>
+                            <input type="checkbox" id="filter17" class="checkbox-button" value="tamaleria">
+                            <label for="filter17">Tamaleria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter18" class="checkbox-button" value="car_rental">
-                            <label for="filter18">Alquiler de Coches</label>
+                            <input type="checkbox" id="filter18" class="checkbox-button" value="huaracheria">
+                            <label for="filter18">Huaracheria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter19" class="checkbox-button" value="car_repair">
-                            <label for="filter19">Taller de Reparación de Coches</label>
+                            <input type="checkbox" id="filter19" class="checkbox-button" value="tostadas">
+                            <label for="filter19">Tostadas</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter20" class="checkbox-button" value="car_wash">
-                            <label for="filter20">Lavado de Coches</label>
+                            <input type="checkbox" id="filter20" class="checkbox-button" value="quesadilleria">
+                            <label for="filter20">Quesadilleria</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter22" class="checkbox-button" value="cemetery">
-                            <label for="filter22">Cementerio</label>
+                            <input type="checkbox" id="filter22" class="checkbox-button" value="esquites">
+                            <label for="filter22">Esquites</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter23" class="checkbox-button" value="church">
-                            <label for="filter23">Iglesia</label>
+                            <input type="checkbox" id="filter23" class="checkbox-button" value="elotes">
+                            <label for="filter23">Elotes</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter24" class="checkbox-button" value="city_hall">
-                            <label for="filter24">Ayuntamiento</label>
+                            <input type="checkbox" id="filter24" class="checkbox-button" value="chamorro">
+                            <label for="filter24">Chamorro</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter25" class="checkbox-button" value="clothing_store">
-                            <label for="filter25">Tienda de Ropa</label>
+                            <input type="checkbox" id="filter25" class="checkbox-button" value="barbacoa">
+                            <label for="filter25">Barbacoa</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter26" class="checkbox-button" value="convenience_store">
-                            <label for="filter26">Tienda de Conveniencia</label>
+                            <input type="checkbox" id="filter26" class="checkbox-button" value="guisados">
+                            <label for="filter26">Guisados</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter27" class="checkbox-button" value="courthouse">
-                            <label for="filter27">Palacio de Justicia</label>
+                            <input type="checkbox" id="filter27" class="checkbox-button" value="tamales">
+                            <label for="filter27">Tamales</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter28" class="checkbox-button" value="dentist">
-                            <label for="filter28">Dentista</label>
+                            <input type="checkbox" id="filter28" class="checkbox-button" value="chilaquiles">
+                            <label for="filter28">Chilaquiles</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter29" class="checkbox-button" value="department_store">
-                            <label for="filter29">Grandes Almacenes</label>
+                            <input type="checkbox" id="filter29" class="checkbox-button" value="carnitas">
+                            <label for="filter29">Carnitas</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter30" class="checkbox-button" value="doctor">
-                            <label for="filter30">Doctor</label>
+                            <input type="checkbox" id="filter30" class="checkbox-button" value="tlacoyos">
+                            <label for="filter30">Tlacoyos</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter31" class="checkbox-button" value="drugstore">
-                            <label for="filter31">Farmacia</label>
+                            <input type="checkbox" id="filter31" class="checkbox-button" value="empanadas">
+                            <label for="filter31">Empanadas</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter32" class="checkbox-button" value="electrician">
-                            <label for="filter32">Electricista</label>
+                            <input type="checkbox" id="filter32" class="checkbox-button" value="huaraches">
+                            <label for="filter32">Huaraches</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter33" class="checkbox-button" value="electronics_store">
-                            <label for="filter33">Tienda de Electrónica</label>
+                            <input type="checkbox" id="filter33" class="checkbox-button" value="tortas ahogadas">
+                            <label for="filter33">Tortas ahogadas</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter34" class="checkbox-button" value="embassy">
-                            <label for="filter34">Embajada</label>
+                            <input type="checkbox" id="filter34" class="checkbox-button" value="parrilladas">
+                            <label for="filter34">Parrilladas</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter35" class="checkbox-button" value="fire_station">
-                            <label for="filter35">Estación de Bomberos</label>
+                            <input type="checkbox" id="filter35" class="checkbox-button" value="cochinita pibil">
+                            <label for="filter35">Cochinita pibil</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter36" class="checkbox-button" value="florist">
-                            <label for="filter36">Floristería</label>
+                            <input type="checkbox" id="filter36" class="checkbox-button" value="cabrito">
+                            <label for="filter36">Cabrito</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter37" class="checkbox-button" value="funeral_home">
-                            <label for="filter37">Funeraria</label>
+                            <input type="checkbox" id="filter37" class="checkbox-button" value="panuchos">
+                            <label for="filter37">Panuchos</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter38" class="checkbox-button" value="furniture_store">
-                            <label for="filter38">Tienda de Muebles</label>
+                            <input type="checkbox" id="filter38" class="checkbox-button" value="Tinga">
+                            <label for="filter38">Tinga</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter39" class="checkbox-button" value="gas_station">
-                            <label for="filter39">Estación de Gasolina</label>
+                            <input type="checkbox" id="filter39" class="checkbox-button" value="estilo Jalisco">
+                            <label for="filter39">Estilo Jalisco</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter40" class="checkbox-button" value="gym">
-                            <label for="filter40">Gimnasio</label>
+                            <input type="checkbox" id="filter40" class="checkbox-button" value="ceviche veracruzano">
+                            <label for="filter40">Ceviche veracruzano</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter41" class="checkbox-button" value="hair_care">
-                            <label for="filter41">Cuidado del Cabello</label>
+                            <input type="checkbox" id="filter41" class="checkbox-button" value="cecina">
+                            <label for="filter41">Cecina</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter42" class="checkbox-button" value="hardware_store">
-                            <label for="filter42">Ferretería</label>
+                            <input type="checkbox" id="filter42" class="checkbox-button" value="chiles rellenos">
+                            <label for="filter42">Chiles rellenos</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter43" class="checkbox-button" value="hindu_temple">
-                            <label for="filter43">Templo Hindú</label>
+                            <input type="checkbox" id="filter43" class="checkbox-button" value="picadillo">
+                            <label for="filter43">Picadillo</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter44" class="checkbox-button" value="home_goods_store">
-                            <label for="filter44">Tienda de Artículos para el Hogar</label>
+                            <input type="checkbox" id="filter44" class="checkbox-button" value="escamoles">
+                            <label for="filter44">Escamoles</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter45" class="checkbox-button" value="hospital">
-                            <label for="filter45">Hospital</label>
+                            <input type="checkbox" id="filter45" class="checkbox-button" value="burritos">
+                            <label for="filter45">Burritos</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter46" class="checkbox-button" value="insurance_agency">
-                            <label for="filter46">Agencia de Seguros</label>
+                            <input type="checkbox" id="filter46" class="checkbox-button" value="capirotada">
+                            <label for="filter46">Capirotada</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter47" class="checkbox-button" value="jewelry_store">
-                            <label for="filter47">Joyería</label>
+                            <input type="checkbox" id="filter47" class="checkbox-button" value="Chalupas">
+                            <label for="filter47">Chalupas</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter48" class="checkbox-button" value="laundry">
-                            <label for="filter48">Lavandería</label>
+                            <input type="checkbox" id="filter48" class="checkbox-button" value="nachos">
+                            <label for="filter48">Nachos</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter49" class="checkbox-button" value="lawyer">
-                            <label for="filter49">Abogado</label>
+                            <input type="checkbox" id="filter49" class="checkbox-button" value="Molletes">
+                            <label for="filter49">Molletes</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter50" class="checkbox-button" value="library">
-                            <label for="filter50">Biblioteca</label>
+                            <input type="checkbox" id="filter50" class="checkbox-button" value="Arrachera">
+                            <label for="filter50">Arrachera</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter51" class="checkbox-button" value="light_rail_station">
-                            <label for="filter51">Estación de Tren Ligero</label>
+                            <input type="checkbox" id="filter51" class="checkbox-button" value="pastes">
+                            <label for="filter51">Pastes</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter52" class="checkbox-button" value="liquor_store">
-                            <label for="filter52">Licorería</label>
+                            <input type="checkbox" id="filter52" class="checkbox-button" value="buñuelos">
+                            <label for="filter52">Buñuelos</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter53" class="checkbox-button" value="local_government_office">
-                            <label for="filter53">Oficina de Gobierno Local</label>
+                            <input type="checkbox" id="filter53" class="checkbox-button" value="mixiotes">
+                            <label for="filter53">Mixiotes</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter54" class="checkbox-button" value="locksmith">
-                            <label for="filter54">Cerrajería</label>
+                            <input type="checkbox" id="filter54" class="checkbox-button" value="Sopa tarasca">
+                            <label for="filter54">Sopa tarasca</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter55" class="checkbox-button" value="lodging">
-                            <label for="filter55">Alojamiento</label>
+                            <input type="checkbox" id="filter55" class="checkbox-button" value="Machitos">
+                            <label for="filter55">Machitos</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter56" class="checkbox-button" value="meal_delivery">
-                            <label for="filter56">Entrega de Comidas</label>
+                            <input type="checkbox" id="filter56" class="checkbox-button" value="Alambre">
+                            <label for="filter56">Alambre</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter57" class="checkbox-button" value="meal_takeaway">
-                            <label for="filter57">Comida para Llevar</label>
+                            <input type="checkbox" id="filter57" class="checkbox-button" value="Sopes">
+                            <label for="filter57">Sopes</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter58" class="checkbox-button" value="mosque">
-                            <label for="filter58">Mezquita</label>
+                            <input type="checkbox" id="filter58" class="checkbox-button" value="Tampiqueña">
+                            <label for="filter58">Tampiqueña</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter59" class="checkbox-button" value="movie_rental">
-                            <label for="filter59">Alquiler de Películas</label>
+                            <input type="checkbox" id="filter59" class="checkbox-button" value="Gorditas de nata">
+                            <label for="filter59">Gorditas de nata</label>
                         </div>
                         <div>
-                            <input type="checkbox" id="filter60" class="checkbox-button" value="movie_theater">
-                            <label for="filter60">Cine</label>
+                            <input type="checkbox" id="filter60" class="checkbox-button" value="Sopa de lima">
+                            <label for="filter60">Sopa de lima</label>
                         </div>
-                        <div>
-                            <input type="checkbox" id="filter61" class="checkbox-button" value="moving_company">
-                            <label for="filter61">Empresa de Mudanzas</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter63" class="checkbox-button" value="night_club">
-                            <label for="filter63">Club Nocturno</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter64" class="checkbox-button" value="painter">
-                            <label for="filter64">Pintor</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter66" class="checkbox-button" value="parking">
-                            <label for="filter66">Aparcamiento</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter67" class="checkbox-button" value="pet_store">
-                            <label for="filter67">Tienda de Mascotas</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter68" class="checkbox-button" value="pharmacy">
-                            <label for="filter68">Farmacia</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter69" class="checkbox-button" value="physiotherapist">
-                            <label for="filter69">Fisioterapeuta</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter70" class="checkbox-button" value="plumber">
-                            <label for="filter70">Fontanero</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter71" class="checkbox-button" value="police">
-                            <label for="filter71">Policía</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter72" class="checkbox-button" value="post_office">
-                            <label for="filter72">Oficina de Correos</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter73" class="checkbox-button" value="primary_school">
-                            <label for="filter73">Escuela Primaria</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter74" class="checkbox-button" value="real_estate_agency">
-                            <label for="filter74">Agencia Inmobiliaria</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter76" class="checkbox-button" value="roofing_contractor">
-                            <label for="filter76">Contratista de Techos</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter77" class="checkbox-button" value="rv_park">
-                            <label for="filter77">Parque para Vehículos Recreativos</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter78" class="checkbox-button" value="school">
-                            <label for="filter78">Escuela</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter79" class="checkbox-button" value="secondary_school">
-                            <label for="filter79">Escuela Secundaria</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter80" class="checkbox-button" value="shoe_store">
-                            <label for="filter80">Zapatería</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter81" class="checkbox-button" value="shopping_mall">
-                            <label for="filter81">Centro Comercial</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter82" class="checkbox-button" value="spa">
-                            <label for="filter82">Spa</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter83" class="checkbox-button" value="stadium">
-                            <label for="filter83">Estadio</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter84" class="checkbox-button" value="storage">
-                            <label for="filter84">Almacenamiento</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter85" class="checkbox-button" value="store">
-                            <label for="filter85">Tienda</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter86" class="checkbox-button" value="subway_station">
-                            <label for="filter86">Estación de Metro</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter87" class="checkbox-button" value="supermarket">
-                            <label for="filter87">Supermercado</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter88" class="checkbox-button" value="synagogue">
-                            <label for="filter88">Sinagoga</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter89" class="checkbox-button" value="taxi_stand">
-                            <label for="filter89">Parada de Taxis</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter91" class="checkbox-button" value="train_station">
-                            <label for="filter91">Estación de Tren</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter92" class="checkbox-button" value="transit_station">
-                            <label for="filter92">Estación de Tránsito</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter93" class="checkbox-button" value="travel_agency">
-                            <label for="filter93">Agencia de Viajes</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter94" class="checkbox-button" value="university">
-                            <label for="filter94">Universidad</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter95" class="checkbox-button" value="veterinary_care">
-                            <label for="filter95">Cuidado Veterinario</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" id="filter96" class="checkbox-button" value="zoo">
-                            <label for="filter96">Zoológico</label>
-                        </div>
-                
-                
                 </div>
             </div>
                 </div>
