@@ -291,15 +291,6 @@ select:focus, select:hover {
     position: relative;
     width: 100%;
 }
-.select-container-category::after {
-    content: '\25BC';
-    font-size: 14px;
-    position: absolute;
-    top: 25%;
-    right: 5%;
-    /*transform: translateY(-10%);*/
-    z-index: 0;
-}
 
 div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm{
     background-color: #65B2C6 !important;
