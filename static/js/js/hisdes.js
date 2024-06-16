@@ -212,7 +212,7 @@ async function displayFavorites() {
   } else {
     favoritesContainer.innerHTML = `
       <div class="no-favorites-message">
-        <p>No hay lugares favoritos agregados aún.</p>
+        <p>No hay lugares visitados agregados aún.</p>
         <button onclick="location.href='/home'">Ir a agregar</button>
       </div>
     `;
